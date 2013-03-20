@@ -1,4 +1,4 @@
-= Redmine
+= Redmine {<img src="https://travis-ci.org/nti-ufpe/redmine.png?branch=nti" alt="Build Status" />}[https://travis-ci.org/nti-ufpe/redmine]  {<img src="https://gemnasium.com/nti-ufpe/redmine.png" alt="Dependency Status" />}[https://gemnasium.com/nti-ufpe/redmine]
 
 Redmine is a flexible project management web application written using Ruby on Rails framework.
 
