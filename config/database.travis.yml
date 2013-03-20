@@ -1,0 +1,16 @@
+development:
+  adapter: mysql2
+  database: redmine_development
+  host: localhost
+  username: root
+  password:
+  encoding: utf8
+
+test:
+  adapter: mysql2
+  database: redmine_test
+  host: localhost
+  username: root
+  password:
+  encoding: utf8
+
