@@ -1,0 +1,3 @@
+[submodule "public/themes/redmine-theme"]
+	path = public/themes/redmine-theme
+	url = https://github.com/nti-ufpe/redmine-theme.git
