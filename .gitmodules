@@ -1,3 +1,18 @@
 [submodule "public/themes/redmine-theme"]
 	path = public/themes/redmine-theme
 	url = https://github.com/nti-ufpe/redmine-theme.git
+[submodule "plugins/redmine_issue_checklist"]
+	path = plugins/redmine_issue_checklist
+	url = https://github.com/nti-ufpe/redmine_issue_checklist.git
+[submodule "plugins/redmine_people"]
+	path = plugins/redmine_people
+	url = https://github.com/nti-ufpe/redmine_people.git
+[submodule "plugins/redmine_release_notes"]
+	path = plugins/redmine_release_notes
+	url = https://github.com/nti-ufpe/redmine_release_notes.git
+[submodule "plugins/due_date_reminder"]
+	path = plugins/due_date_reminder
+	url = https://github.com/nti-ufpe/due_date_reminder.git
+[submodule "plugins/redmine_favourite_projects"]
+	path = plugins/redmine_favourite_projects
+	url = https://github.com/nti-ufpe/redmine_favourite_projects.git
