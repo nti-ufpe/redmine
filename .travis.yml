@@ -6,6 +6,9 @@ env:
 script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
-  - bundle exec rake test
+  - bundle exec rake redmine:plugins:migrate RAILS_ENV=test
+  - bundle exec rake test:rdm_routing
+  - bundle exec rake test test/functional
+  - bundle exec rake test test/unit/
 before_script:
   - cp config/database.travis.yml config/database.yml
