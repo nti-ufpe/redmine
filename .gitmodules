@@ -16,3 +16,6 @@
 [submodule "plugins/redmine_favourite_projects"]
 	path = plugins/redmine_favourite_projects
 	url = https://github.com/nti-ufpe/redmine_favourite_projects.git
+[submodule "plugins/latest-issues-redmine-plugin"]
+	path = plugins/latest-issues-redmine-plugin
+	url = https://github.com/nti-ufpe/latest-issues-redmine-plugin.git
