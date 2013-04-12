@@ -19,3 +19,9 @@
 [submodule "plugins/latest-issues-redmine-plugin"]
 	path = plugins/latest-issues-redmine-plugin
 	url = https://github.com/nti-ufpe/latest-issues-redmine-plugin.git
+[submodule "plugins/redmine_issues_macros"]
+	path = plugins/redmine_issues_macros
+	url = https://github.com/nti-ufpe/redmine_issues_macros.git
+[submodule "plugins/redmine_issue_detailed_tabs_time"]
+	path = plugins/redmine_issue_detailed_tabs_time
+	url = https://github.com/nti-ufpe/redmine_issue_detailed_tabs_time.git
