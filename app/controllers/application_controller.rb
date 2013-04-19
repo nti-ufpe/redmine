@@ -172,9 +172,8 @@ class ApplicationController < ActionController::Base
 
   def set_localization
     lang = nil
-    if User.current.logged?
-      lang = find_language(User.current.language)
-    end
+    lang = find_language(User.current.language) if User.current.logged?
+    lang ||= Setting.default_language
     if lang.nil? && request.env['HTTP_ACCEPT_LANGUAGE']
       accept_lang = parse_qvalues(request.env['HTTP_ACCEPT_LANGUAGE']).first
       if !accept_lang.blank?
