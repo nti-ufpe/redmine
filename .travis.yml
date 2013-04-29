@@ -6,12 +6,7 @@ env:
 script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
-  - bundle exec rake redmine:plugins:migrate NAME=redmine_issue_checklist RAILS_ENV=test
-  - bundle exec rake redmine:plugins:migrate NAME=redmine_people RAILS_ENV=test
-  - bundle exec rake redmine:plugins:migrate NAME=redmine_release_notes RAILS_ENV=test
-  - bundle exec rake redmine:plugins:release_notes:load_default_formats RAILS_ENV=test
-  - bundle exec rake redmine:plugins:migrate NAME=due_date_reminder RAILS_ENV=test
-  - bundle exec rake redmine:plugins:migrate NAME=latest_issues RAILS_ENV=test
+  - bundle exec rake redmine:plugins:migrate RAILS_ENV=test
   - bundle exec rake test:rdm_routing
   #- bundle exec rake test test/functional
   #- bundle exec rake test test/unit
