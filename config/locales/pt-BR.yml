@@ -828,10 +828,10 @@ pt-BR:
   label_descending: Descendente
   label_sort: Ordenar
   label_ascending: Ascendente
-  label_date_from_to: De %{start} até %{end}
+  label_date_from_to: "De %{start} até %{end}"
   label_greater_or_equal: ">="
   label_less_or_equal: <=
-  text_wiki_page_destroy_question: Esta página tem %{descendants} página(s) filha(s) e descendente(s). O que você quer fazer?
+  text_wiki_page_destroy_question: "Esta página tem %{descendants} página(s) filha(s) e descendente(s). O que você quer fazer?"
   text_wiki_page_reassign_children: Reatribuir páginas filhas para esta página pai
   text_wiki_page_nullify_children: Manter as páginas filhas como páginas raízes
   text_wiki_page_destroy_children: Excluir páginas filhas e todas suas descendentes
@@ -881,7 +881,7 @@ pt-BR:
   setting_issue_done_ratio_issue_status: Usar a situação da tarefa
   error_issue_done_ratios_not_updated: O percentual de conclusão das tarefas não foi atualizado.
   error_workflow_copy_target: Por favor, selecione os tipos de tarefa e os papéis alvo
-  setting_issue_done_ratio_issue_field: Use o campo da tarefa
+  setting_issue_done_ratio_issue_field: Utilize o campo da tarefa
   label_copy_same_as_target: Mesmo alvo
   label_copy_target: Alvo
   notice_issue_done_ratios_updated: Percentual de conclusão atualizados.
@@ -891,16 +891,16 @@ pt-BR:
   field_watcher: Observador
   permission_view_issues: Ver tarefas
   label_display_used_statuses_only: Somente exibir situações que são usadas por este tipo de tarefa
-  label_revision_id: Revisão %{value}
+  label_revision_id: "Revisão %{value}"
   label_api_access_key: Chave de acesso a API
   button_show: Exibir
-  label_api_access_key_created_on: Chave de acesso a API criado a %{value} atrás
+  label_api_access_key_created_on: "Chave de acesso a API criado a %{value} atrás"
   label_feeds_access_key: Chave de acesso ao RSS
   notice_api_access_key_reseted: Sua chave de acesso a API foi redefinida.
   setting_rest_api_enabled: Habilitar a api REST
   label_missing_api_access_key: Chave de acesso a API faltando
   label_missing_feeds_access_key: Chave de acesso ao RSS faltando
-  text_line_separated: Múltiplos valores permitidos (uma linha para cada valor).
+  text_line_separated: "Múltiplos valores permitidos (uma linha para cada valor)."
   setting_mail_handler_body_delimiters: Truncar e-mails após uma destas linhas
   permission_add_subprojects: Criar subprojetos
   label_subproject_new: Novo subprojeto
@@ -920,7 +920,7 @@ pt-BR:
   label_subtask_plural: Subtarefas
   label_project_copy_notifications: Enviar notificações por e-mail ao copiar projeto
   error_can_not_delete_custom_field: Não foi possível excluir o campo personalizado
-  error_unable_to_connect: Não foi possível conectar (%{value})
+  error_unable_to_connect: "Não foi possível conectar (%{value})"
   error_can_not_remove_role: Este papel está em uso e não pode ser excluído.
   error_can_not_delete_tracker: Este tipo de tarefa está atribuído a alguma(s) tarefa(s) e não pode ser excluído.
   field_principal: Principal
@@ -948,9 +948,9 @@ pt-BR:
   field_visible: Visível
   setting_emails_header: Cabeçalho do e-mail
   setting_commit_logtime_activity_id: Atividade para registrar horas
-  text_time_logged_by_changeset: Aplicado no changeset %{value}.
+  text_time_logged_by_changeset: "Aplicado no changeset %{value}."
   setting_commit_logtime_enabled: Habilitar registro de horas
-  notice_gantt_chart_truncated: O gráfico foi cortado por exceder o tamanho máximo de linhas que podem ser exibidas (%{max})
+  notice_gantt_chart_truncated: "O gráfico foi cortado por exceder o tamanho máximo de linhas que podem ser exibidas (%{max})"
   setting_gantt_items_limit: Número máximo de itens exibidos no gráfico gatt
   field_warn_on_leaving_unsaved: Alertar-me ao sair de uma página sem salvar o texto
   text_warn_on_leaving_unsaved: A página atual contem texto que não foi salvo e será perdido se você sair desta página.
@@ -973,7 +973,7 @@ pt-BR:
   field_is_private: Privado
   permission_set_issues_private: Alterar tarefas para públicas ou privadas
   label_issues_visibility_public: Todas as tarefas não privadas
-  text_issues_destroy_descendants_confirmation: Isto também irá excluir %{count} subtarefa(s).
+  text_issues_destroy_descendants_confirmation: "Isto também irá excluir %{count} subtarefa(s)."
   field_commit_logs_encoding: Codificação das mensagens de commit
   field_scm_path_encoding: Codificação do caminho
   text_scm_path_encoding_note: "Padrão: UTF-8"
@@ -985,13 +985,13 @@ pt-BR:
   text_scm_command: Comando
   text_scm_command_version: Versão
   label_git_report_last_commit: Relatar última alteração para arquivos e diretórios
-  text_scm_config: Você pode configurar seus comandos de versionamento em config/configurations.yml. Por favor reinicie a aplicação após alterá-lo.
+  text_scm_config: "Você pode configurar seus comandos de versionamento em config/configurations.yml. Por favor reinicie a aplicação após alterá-lo."
   text_scm_command_not_available: Comando de versionamento não disponível. Por favor verifique as configurações no painel de administração.
-  notice_issue_successful_create: Tarefa %{id} criada.
+  notice_issue_successful_create: "Tarefa %{id} criada."
   label_between: entre
   setting_issue_group_assignment: Permitir tarefas atribuídas a grupos
   label_diff: diff
-  text_git_repository_note: Repositório é do tipo bare e local (e.g. /gitrepo, c:\gitrepo)
+  text_git_repository_note: "Repositório é do tipo bare e local (e.g. /gitrepo, c:\gitrepo)"
 
   description_query_sort_criteria_direction: Escolher direção
   description_project_scope: Escopo da pesquisa
@@ -1020,7 +1020,7 @@ pt-BR:
   description_all_columns: Todas colunas
   button_export: Exportar
   label_export_options: "%{export_format} opções de exportação"
-  error_attachment_too_big: O arquivo não pode ser carregado porque excede o tamanho máximo permitido (%{max_size})
+  error_attachment_too_big: "O arquivo não pode ser carregado porque excede o tamanho máximo permitido (%{max_size})"
   notice_failed_to_save_time_entries: "Falha ao salvar %{count} entrada(s) do %{total} selecionados: %{ids}."
   label_x_issues:
     zero:  0 tarefa
@@ -1031,13 +1031,13 @@ pt-BR:
   label_copy_attachments: Copiar anexos
   label_item_position: "%{position}/%{count}"
   label_completed_versions: Versões finalizadas
-  text_project_identifier_info: Apenas letras minúsculas (a-z), números, traços e underline são permitidos.<br />Uma vez salvo, o identificador não pode ser modificado.
+  text_project_identifier_info: "Apenas letras minúsculas (a-z), números, traços e underline são permitidos.<br />Uma vez salvo, o identificador não pode ser modificado."
   field_multiple: Múltiplos valores
   setting_commit_cross_project_ref: Permitir que tarefas de todos outros projetos sejam referenciadas e fixadas
   text_issue_conflict_resolution_add_notes: Adicionar minhas notas e descartar minhas outras mudanças
   text_issue_conflict_resolution_overwrite: Adicionar minhas mudanças (notas anteriores podem ser mantidas, mas outras mudanças podem ser sobrescritas)
   notice_issue_update_conflict: A tarefa está sendo atualizada por outro usuário enquanto você está editando-a.
-  text_issue_conflict_resolution_cancel: Descartar todas minhas mudanças e mostrar e reexibir %{link}
+  text_issue_conflict_resolution_cancel: "Descartar todas minhas mudanças e mostrar e reexibir %{link}"
   permission_manage_related_issues: Gerenciar tarefas relacionadas
   field_auth_source_ldap_filter: Filtro LDAP
   label_search_for_watchers: Procurar por observadores para adicionar
@@ -1052,7 +1052,7 @@ pt-BR:
   setting_session_lifetime: Tempo máximo de sessão
   setting_session_timeout: Tempo limite de inatividade da sessão
   label_session_expiration: Fim da sessão
-  permission_close_project: Concluir / Reabir o projeto
+  permission_close_project: "Concluir / Reabir o projeto"
   label_show_closed_projects: Ver projetos concluídos
   button_close: Concluído
   button_reopen: Reaberto
@@ -1060,21 +1060,21 @@ pt-BR:
   project_status_closed: concluído
   project_status_archived: arquivado
   text_project_closed: O projeto está concluído e somente para leitura.
-  notice_user_successful_create: Usuário %{id} criado.
+  notice_user_successful_create: "Usuário %{id} criado."
   field_core_fields: Campos padrões
-  field_timeout: Tempo limite (em segundos)
+  field_timeout: "Tempo limite (em segundos)"
   setting_thumbnails_enabled: Mostrar anexo em miniatura
-  setting_thumbnails_size: Tamanho da miniatura (em pixels)
+  setting_thumbnails_size: "Tamanho da miniatura (em pixels)"
   label_status_transitions: Transições de status
   label_fields_permissions: Permissões de campos
   label_readonly: Somente leitura
   label_required: Requerido
-  text_repository_identifier_info: Apenas letras minúsculas (a-z), números, traços e underline são permitidos.<br />Uma vez salvo, o identificador não pode ser modificado.
+  text_repository_identifier_info: "Apenas letras minúsculas (a-z), números, traços e underline são permitidos.<br/>Uma vez salvo, o identificador não pode ser modificado."
   field_board_parent: Fórum pai
-  label_attribute_of_project: %{name} do Projeto
-  label_attribute_of_author: %{name} do autor
-  label_attribute_of_assigned_to: %{name} do responsável
-  label_attribute_of_fixed_version: %{name} da versão
+  label_attribute_of_project: "%{name} do Projeto"
+  label_attribute_of_author: "%{name} do autor"
+  label_attribute_of_assigned_to: "%{name} do responsável"
+  label_attribute_of_fixed_version: "%{name} da versão"
   label_copy_subtasks: Copiar subtarefas
   label_copied_to: copiado para
   label_copied_from: copiado de
@@ -1085,13 +1085,13 @@ pt-BR:
   permission_set_notes_private: Colocar notas como privadas
   label_no_issues_in_project: sem tarefa no projeto
   label_any: todos
-  label_last_n_weeks: %{count} última(s) semana(s)
+  label_last_n_weeks: "%{count} última(s) semana(s)"
   setting_cross_project_subtasks: Permitir subtarefas entre projetos
   label_cross_project_descendants: Com sub-projetos
   label_cross_project_tree: Com a árvore do projeto
   label_cross_project_hierarchy: Com a hierarquia do projeto
   label_cross_project_system: Com todos os projetos
-  button_hide: Esconder
+  button_hide: Omitir
   setting_non_working_week_days: Dias sem expediente
   label_in_the_next_days: nos próximos dias
   label_in_the_past_days: nos dias anteriores
