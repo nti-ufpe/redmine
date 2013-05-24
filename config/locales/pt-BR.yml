@@ -991,7 +991,7 @@ pt-BR:
   label_between: entre
   setting_issue_group_assignment: Permitir tarefas atribuídas a grupos
   label_diff: diff
-  text_git_repository_note: "Repositório é do tipo bare e local (e.g. /gitrepo, c:\gitrepo)"
+  text_git_repository_note: Repositório é do tipo bare e local (e.g. /gitrepo, c:\gitrepo)
 
   description_query_sort_criteria_direction: Escolher direção
   description_project_scope: Escopo da pesquisa
