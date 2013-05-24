@@ -1070,7 +1070,7 @@ pt-BR:
   label_readonly: Somente leitura
   label_required: Requerido
   text_repository_identifier_info: Apenas letras minúsculas (a-z), números, traços e underline são permitidos.<br />Uma vez salvo, o identificador não pode ser modificado.
-  field_board_parent: F�rum pai
+  field_board_parent: Fórum pai
   label_attribute_of_project: %{name} do Projeto
   label_attribute_of_author: %{name} do autor
   label_attribute_of_assigned_to: %{name} do responsável
