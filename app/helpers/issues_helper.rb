@@ -80,7 +80,7 @@ module IssuesHelper
   def render_descendants_tree(issue)
     s = '<form><table class="list issues">'
     issue_list(issue.descendants.visible.sort_by(&:lft)) do |child, level|
-      css = "issue issue-#{child.id} hascontextmenu"
+      css = "issue issue-#{child.id} hascontextmenu  #{child.css_classes}"
       css << " idnt idnt-#{level}" if level > 0
       s << content_tag('tr',
              content_tag('td', check_box_tag("ids[]", child.id, false, :id => nil), :class => 'checkbox') +
