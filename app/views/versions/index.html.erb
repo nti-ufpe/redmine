@@ -18,7 +18,7 @@
     <table class="list related-issues">
     <caption><%= l(:label_related_issues) %></caption>
     <% issues.each do |issue| -%>
-      <tr class="hascontextmenu">
+      <tr class="hascontextmenu <%= issue.css_classes %>">
         <td class="checkbox"><%= check_box_tag 'ids[]', issue.id, false, :id => nil %></td>
         <td><%= link_to_issue(issue, :project => (@project != issue.project)) %></td>
       </tr>
@@ -53,7 +53,7 @@
 <% end %>
 <% if @completed_versions.present? %>
 <p>
-	<%= link_to_function l(:label_completed_versions), 
+	<%= link_to_function l(:label_completed_versions),
 	                     '$("#toggle-completed-versions").toggleClass("collapsed"); $("#completed-versions").toggle()',
 	                     :id => 'toggle-completed-versions', :class => 'collapsible collapsed' %><br />
 	<span id="completed-versions" style="display:none;">
