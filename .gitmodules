@@ -25,3 +25,6 @@
 [submodule "plugins/latest_issues"]
 	path = plugins/latest_issues
 	url = https://github.com/nti-ufpe/latest-issues-redmine-plugin.git
+[submodule "plugins/timelog_timer"]
+	path = plugins/timelog_timer
+	url = https://github.com/nti-ufpe/redmine_timelog_timer.git
