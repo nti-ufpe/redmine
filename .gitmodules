@@ -34,3 +34,6 @@
 [submodule "plugins/redmine_issue_templates"]
 	path = plugins/redmine_issue_templates
 	url = https://github.com/nti-ufpe/redmine_issue_templates.git
+[submodule "plugins/redmine_monitoring_controlling"]
+	path = plugins/redmine_monitoring_controlling
+	url = https://github.com/nti-ufpe/Redmine-Monitoring-Controlling.git
