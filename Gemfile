@@ -81,6 +81,7 @@ group :test do
   gem "mocha", "~> 0.13.3"
   gem 'capybara', '~> 2.0.0'
   gem 'nokogiri', '< 1.6.0'
+  gem 'mysql2', '~> 0.3.11'
 end
 
 local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
