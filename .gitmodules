@@ -37,3 +37,9 @@
 [submodule "plugins/redmine_monitoring_controlling"]
 	path = plugins/redmine_monitoring_controlling
 	url = https://github.com/nti-ufpe/Redmine-Monitoring-Controlling.git
+[submodule "plugins/open_flash_chart"]
+	path = plugins/open_flash_chart
+	url = https://github.com/nti-ufpe/open_flash_chart.git
+[submodule "plugins/redmine_charts2"]
+	path = plugins/redmine_charts2
+	url = https://github.com/nti-ufpe/redmine_charts2.git
