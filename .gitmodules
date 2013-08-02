@@ -28,3 +28,6 @@
 [submodule "plugins/timelog_timer"]
 	path = plugins/timelog_timer
 	url = https://github.com/nti-ufpe/redmine_timelog_timer.git
+[submodule "plugins/scrum2b"]
+	path = plugins/scrum2b
+	url = https://github.com/nti-ufpe/scrum2b.git
