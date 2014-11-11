@@ -43,3 +43,6 @@
 [submodule "plugins/redmine_charts2"]
 	path = plugins/redmine_charts2
 	url = https://github.com/nti-ufpe/redmine_charts2.git
+[submodule "plugins/redmine_tags"]
+	path = plugins/redmine_tags
+	url = https://github.com/nti-ufpe/redmine_tags.git
