@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -80,6 +80,20 @@ class MyControllerTest < ActionController::TestCase
     assert_equal User.find(2), assigns(:user)
 
     assert_no_tag :input, :attributes => { :name => 'user[custom_field_values][4]'}
+  end
+
+  def test_my_account_should_show_language_select
+    get :account
+    assert_response :success
+    assert_select 'select[name=?]', 'user[language]'
+  end
+
+  def test_my_account_should_not_show_language_select_with_force_default_language_for_loggedin
+    with_settings :force_default_language_for_loggedin => '1' do
+      get :account
+      assert_response :success
+      assert_select 'select[name=?]', 'user[language]', 0
+    end
   end
 
   def test_update_account
@@ -170,6 +184,18 @@ class MyControllerTest < ActionController::TestCase
                     :new_password_confirmation => 'secret123'
     assert_redirected_to '/my/account'
     assert User.try_to_login('jsmith', 'secret123')
+  end
+
+  def test_change_password_kills_other_sessions
+    @request.session[:ctime] = (Time.now - 30.minutes).utc.to_i
+
+    jsmith = User.find(2)
+    jsmith.passwd_changed_on = Time.now
+    jsmith.save!
+
+    get 'account'
+    assert_response 302
+    assert flash[:error].match(/Your session has expired/)
   end
 
   def test_change_password_should_redirect_if_user_cannot_change_its_password

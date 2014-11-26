@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -221,7 +221,7 @@ module Redmine
         out = ''.html_safe
         out << link_to_function(show_label, js, :id => "#{html_id}-show", :class => 'collapsible collapsed')
         out << link_to_function(hide_label, js, :id => "#{html_id}-hide", :class => 'collapsible', :style => 'display:none;')
-        out << content_tag('div', textilizable(text, :object => obj), :id => html_id, :class => 'collapsed-text', :style => 'display:none;')
+        out << content_tag('div', textilizable(text, :object => obj, :headings => false), :id => html_id, :class => 'collapsed-text', :style => 'display:none;')
         out
       end
 
@@ -236,8 +236,11 @@ module Redmine
         size = nil unless size > 0
         if obj && obj.respond_to?(:attachments) && attachment = Attachment.latest_attach(obj.attachments, filename)
           title = options[:title] || attachment.title
-          img = image_tag(url_for(:controller => 'attachments', :action => 'thumbnail', :id => attachment, :size => size), :alt => attachment.filename)
-          link_to(img, url_for(:controller => 'attachments', :action => 'show', :id => attachment), :class => 'thumbnail', :title => title)
+          thumbnail_url = url_for(:controller => 'attachments', :action => 'thumbnail', :id => attachment, :size => size, :only_path => @only_path)
+          image_url = url_for(:controller => 'attachments', :action => 'show', :id => attachment, :only_path => @only_path)
+
+          img = image_tag(thumbnail_url, :alt => attachment.filename)
+          link_to(img, image_url, :class => 'thumbnail', :title => title)
         else
           raise "Attachment #{filename} not found"
         end

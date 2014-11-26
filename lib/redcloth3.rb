@@ -129,11 +129,11 @@
 #
 # Will become:
 #
-#  <acronym title="American Civil Liberties Union">ACLU</acronym>
+#  <abbr title="American Civil Liberties Union">ACLU</abbr>
 #
 # == Adding Tables
 #
-# In Textile, simple tables can be added by seperating each column by
+# In Textile, simple tables can be added by separating each column by
 # a pipe.
 #
 #     |a|simple|table|row|
@@ -457,7 +457,7 @@ class RedCloth3 < String
         #    text.gsub! re, resub
         #end
         text.gsub!(/\b([A-Z][A-Z0-9]{1,})\b(?:[(]([^)]*)[)])/) do |m|
-          "<acronym title=\"#{htmlesc $2}\">#{$1}</acronym>"
+          "<abbr title=\"#{htmlesc $2}\">#{$1}</abbr>"
         end
     end
 
@@ -525,7 +525,7 @@ class RedCloth3 < String
             tatts = pba( tatts, 'table' )
             tatts = shelve( tatts ) if tatts
             rows = []
-
+            fullrow.gsub!(/([^|])\n/, "\\1<br />")
             fullrow.each_line do |row|
                 ratts, row = pba( $1, 'tr' ), $2 if row =~ /^(#{A}#{C}\. )(.*)/m
                 cells = []

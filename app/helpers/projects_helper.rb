@@ -1,7 +1,7 @@
 # encoding: utf-8
 #
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,11 +18,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 module ProjectsHelper
-  def link_to_version(version, options = {})
-    return '' unless version && version.is_a?(Version)
-    link_to_if version.visible?, format_version_name(version), { :controller => 'versions', :action => 'show', :id => version }, options
-  end
-
   def project_settings_tabs
     tabs = [{:name => 'info', :action => :edit_project, :partial => 'projects/edit', :label => :label_information_plural},
             {:name => 'modules', :action => :select_project_modules, :partial => 'projects/settings/modules', :label => :label_module_plural},
@@ -46,9 +41,24 @@ module ProjectsHelper
     end
 
     options = ''
-    options << "<option value=''></option>" if project.allowed_parents.include?(nil)
+    options << "<option value=''>&nbsp;</option>" if project.allowed_parents.include?(nil)
     options << project_tree_options_for_select(project.allowed_parents.compact, :selected => selected)
     content_tag('select', options.html_safe, :name => 'project[parent_id]', :id => 'project_parent_id')
+  end
+
+  def render_project_action_links
+    links = []
+    if User.current.allowed_to?(:add_project, nil, :global => true)
+      links << link_to(l(:label_project_new), new_project_path, :class => 'icon icon-add')
+    end
+    if User.current.allowed_to?(:view_issues, nil, :global => true)
+      links << link_to(l(:label_issue_view_all), issues_path)
+    end
+    if User.current.allowed_to?(:view_time_entries, nil, :global => true)
+      links << link_to(l(:label_overall_spent_time), time_entries_path)
+    end
+    links << link_to(l(:label_overall_activity), activity_path)
+    links.join(" | ").html_safe
   end
 
   # Renders the projects index
@@ -69,15 +79,37 @@ module ProjectsHelper
       grouped[version.project.name] << [version.name, version.id]
     end
 
+    selected = selected.is_a?(Version) ? selected.id : selected
     if grouped.keys.size > 1
-      grouped_options_for_select(grouped, selected && selected.id)
+      grouped_options_for_select(grouped, selected)
     else
-      options_for_select((grouped.values.first || []), selected && selected.id)
+      options_for_select((grouped.values.first || []), selected)
     end
   end
 
   def format_version_sharing(sharing)
     sharing = 'none' unless Version::VERSION_SHARINGS.include?(sharing)
     l("label_version_sharing_#{sharing}")
+  end
+
+  def render_api_includes(project, api)
+    api.array :trackers do
+      project.trackers.each do |tracker|
+        api.tracker(:id => tracker.id, :name => tracker.name)
+      end
+    end if include_in_api_response?('trackers')
+
+    api.array :issue_categories do
+      project.issue_categories.each do |category|
+        api.issue_category(:id => category.id, :name => category.name)
+      end
+    end if include_in_api_response?('issue_categories')
+
+    api.array :enabled_modules do
+      project.enabled_modules.each do |enabled_module|
+        api.enabled_module(:id => enabled_module.id, :name => enabled_module.name)
+      end
+    end if include_in_api_response?('enabled_modules')
+
   end
 end

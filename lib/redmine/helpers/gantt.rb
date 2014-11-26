@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -162,11 +162,12 @@ module Redmine
         ids = issues.collect(&:project).uniq.collect(&:id)
         if ids.any?
           # All issues projects and their visible ancestors
-          @projects = Project.visible.all(
-            :joins => "LEFT JOIN #{Project.table_name} child ON #{Project.table_name}.lft <= child.lft AND #{Project.table_name}.rgt >= child.rgt",
-            :conditions => ["child.id IN (?)", ids],
-            :order => "#{Project.table_name}.lft ASC"
-          ).uniq
+          @projects = Project.visible.
+            joins("LEFT JOIN #{Project.table_name} child ON #{Project.table_name}.lft <= child.lft AND #{Project.table_name}.rgt >= child.rgt").
+            where("child.id IN (?)", ids).
+            order("#{Project.table_name}.lft ASC").
+            uniq.
+            all
         else
           @projects = []
         end
@@ -214,12 +215,13 @@ module Redmine
         @number_of_rows += 1
         return if abort?
         issues = project_issues(project).select {|i| i.fixed_version.nil?}
-        sort_issues!(issues)
+        self.class.sort_issues!(issues)
         if issues
           render_issues(issues, options)
           return if abort?
         end
         versions = project_versions(project)
+        self.class.sort_versions!(versions)
         versions.each do |version|
           render_version(project, version, options)
         end
@@ -248,7 +250,7 @@ module Redmine
         return if abort?
         issues = version_issues(project, version)
         if issues
-          sort_issues!(issues)
+          self.class.sort_issues!(issues)
           # Indent issues
           options[:indent] += options[:indent_increment]
           render_issues(issues, options)
@@ -309,9 +311,9 @@ module Redmine
           html_class << (version.behind_schedule? ? 'version-behind-schedule' : '') << " "
           html_class << (version.overdue? ? 'version-overdue' : '')
           html_class << ' version-closed' unless version.open?
-          if version.start_date && version.due_date && version.completed_pourcent
+          if version.start_date && version.due_date && version.completed_percent
             progress_date = calc_progress_date(version.start_date,
-                                               version.due_date, version.completed_pourcent)
+                                               version.due_date, version.completed_percent)
             html_class << ' behind-start-date' if progress_date < self.date_from
             html_class << ' over-end-date' if progress_date > self.date_to
           end
@@ -336,7 +338,7 @@ module Redmine
           coords = coordinates(version.start_date,
                                version.due_date, version.completed_percent,
                                options[:zoom])
-          label = "#{h version} #{h version.completed_percent.to_i.to_s}%"
+          label = "#{h(version)} #{h(version.completed_percent.to_f.round)}%"
           label = h("#{version.project} -") + label unless @project && @project == version.project
           case options[:format]
           when :html
@@ -675,18 +677,23 @@ module Redmine
         start_date + (end_date - start_date + 1) * (progress / 100.0)
       end
 
-      # TODO: Sorts a collection of issues by start_date, due_date, id for gantt rendering
-      def sort_issues!(issues)
-        issues.sort! { |a, b| gantt_issue_compare(a, b) }
+      def self.sort_issues!(issues)
+        issues.sort! {|a, b| sort_issue_logic(a) <=> sort_issue_logic(b)}
       end
 
-      # TODO: top level issues should be sorted by start date
-      def gantt_issue_compare(x, y)
-        if x.root_id == y.root_id
-          x.lft <=> y.lft
-        else
-          x.root_id <=> y.root_id
-        end
+      def self.sort_issue_logic(issue)
+        julian_date = Date.new()
+        ancesters_start_date = []
+        current_issue = issue
+        begin
+          ancesters_start_date.unshift([current_issue.start_date || julian_date, current_issue.id])
+          current_issue = current_issue.parent
+        end while (current_issue)
+        ancesters_start_date
+      end
+
+      def self.sort_versions!(versions)
+        versions.sort!
       end
 
       def current_limit
@@ -849,6 +856,9 @@ module Redmine
       end
 
       def pdf_task(params, coords, options={})
+        cell_height_ratio = params[:pdf].get_cell_height_ratio()
+        params[:pdf].set_cell_height_ratio(0.1)
+
         height = options[:height] || 2
         # Renders the task bar, with progress and late
         if coords[:bar_start] && coords[:bar_end]
@@ -889,6 +899,8 @@ module Redmine
           params[:pdf].SetX(params[:subject_width] + (coords[:bar_end] || 0) + 5)
           params[:pdf].RDMCell(30, 2, options[:label])
         end
+
+        params[:pdf].set_cell_height_ratio(cell_height_ratio)
       end
 
       def image_task(params, coords, options={})

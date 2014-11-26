@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -39,8 +39,6 @@ class ProjectNestedSetTest < ActiveSupport::TestCase
     @b1.set_parent!(@b)
     @b11 = Project.create!(:name => 'B11', :identifier => 'projectb11')
     @b11.set_parent!(@b1)
-
-    @a, @a1, @a2, @b, @b1, @b11, @b2, @c, @c1 = *(Project.all.sort_by(&:name))
   end
 
   def test_valid_tree
@@ -50,12 +48,12 @@ class ProjectNestedSetTest < ActiveSupport::TestCase
   def test_rebuild_should_build_valid_tree
     Project.update_all "lft = NULL, rgt = NULL"
 
-    Project.rebuild!
+    Project.rebuild_tree!
     assert_valid_nested_set
   end
 
   def test_rebuild_tree_should_build_valid_tree_even_with_valid_lft_rgt_values
-    Project.update_all "name = 'YY'", {:id => @a.id }
+    Project.where({:id => @a.id }).update_all("name = 'YY'")
     # lft and rgt values are still valid (Project.rebuild! would not update anything)
     # but projects are not ordered properly (YY is in the first place)
 
@@ -176,7 +174,7 @@ class ProjectNestedSetTest < ActiveSupport::TestCase
     projects.each do |project|
       if project.children.any?
         # sibling projects sorted alphabetically
-        assert_equal project.children.map(&:name).sort, project.children.order('lft').map(&:name), "Project #{project.name}'s children were not properly sorted"
+        assert_equal project.children.map(&:name).sort, project.children.sort_by(&:lft).map(&:name), "Project #{project.name}'s children were not properly sorted"
       end
     end
   end

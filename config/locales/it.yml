@@ -134,6 +134,7 @@ it:
         not_same_project: "non appartiene allo stesso progetto"
         circular_dependency: "Questa relazione creerebbe una dipendenza circolare"
         cant_link_an_issue_with_a_descendant: "Una segnalazione non può essere collegata a una delle sue discendenti"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   actionview_instancetag_blank_option: Scegli
 
@@ -145,14 +146,13 @@ it:
   general_csv_separator: ';'
   general_csv_decimal_separator: ','
   general_csv_encoding: ISO-8859-1
-  general_pdf_encoding: UTF-8
+  general_pdf_fontname: freesans
   general_first_day_of_week: '1'
 
   notice_account_updated: L'utente è stato aggiornato.
   notice_account_invalid_creditentials: Nome utente o password non validi.
   notice_account_password_updated: La password è stata aggiornata.
   notice_account_wrong_password: Password errata
-  notice_account_register_done: L'utente è stato creato.
   notice_account_unknown_email: Utente sconosciuto.
   notice_can_t_change_password: Questo utente utilizza un metodo di autenticazione esterno. Impossibile cambiare la password.
   notice_account_lost_email_sent: Ti è stata spedita una email con le istruzioni per cambiare la password.
@@ -166,7 +166,7 @@ it:
   notice_not_authorized: Non sei autorizzato ad accedere a questa pagina.
   notice_email_sent: "Una email è stata spedita a %{value}"
   notice_email_error: "Si è verificato un errore durante l'invio di una email (%{value})"
-  notice_feeds_access_key_reseted: La tua chiave di accesso RSS è stata reimpostata.
+  notice_feeds_access_key_reseted: La tua chiave di accesso Atom è stata reimpostata.
 
   error_scm_not_found: "La risorsa e/o la versione non esistono nel repository."
   error_scm_command_failed: "Si è verificato un errore durante l'accesso al repository: %{value}"
@@ -493,10 +493,10 @@ it:
   label_loading: Caricamento...
   label_relation_new: Nuova relazione
   label_relation_delete: Elimina relazione
-  label_relates_to: correlato a
-  label_duplicates: duplicati
-  label_blocks: blocchi
-  label_blocked_by: bloccato da
+  label_relates_to: correlata a
+  label_duplicates: duplica
+  label_blocks: blocca
+  label_blocked_by: bloccata da
   label_precedes: precede
   label_follows: segue
   label_end_to_start: fine a inizio
@@ -524,7 +524,7 @@ it:
   label_language_based: Basato sul linguaggio
   label_sort_by: "Ordina per %{value}"
   label_send_test_email: Invia una email di prova
-  label_feeds_access_key_created_on: "chiave di accesso RSS creata %{value} fa"
+  label_feeds_access_key_created_on: "chiave di accesso Atom creata %{value} fa"
   label_module_plural: Moduli
   label_added_time_by: "Aggiunto da %{author} %{age} fa"
   label_updated_time: "Aggiornato %{value} fa"
@@ -720,7 +720,7 @@ it:
   mail_body_reminder: "%{count} segnalazioni che ti sono state assegnate scadranno nei prossimi %{days} giorni:"
   mail_subject_reminder: "%{count} segnalazioni in scadenza nei prossimi %{days} giorni"
   text_user_wrote: "%{value} ha scritto:"
-  label_duplicated_by: duplicato da
+  label_duplicated_by: duplicata da
   setting_enabled_scm: SCM abilitato
   text_enumeration_category_reassign_to: 'Riassegnale a questo valore:'
   text_enumeration_destroy_question: "%{count} oggetti hanno un assegnamento su questo valore."
@@ -874,11 +874,11 @@ it:
   label_revision_id: Revisione %{value}
   label_api_access_key: Chiave di accesso API
   label_api_access_key_created_on: Chiave di accesso API creata %{value} fa
-  label_feeds_access_key: Chiave di accesso RSS
+  label_feeds_access_key: Chiave di accesso Atom
   notice_api_access_key_reseted: La chiave di accesso API è stata reimpostata.
   setting_rest_api_enabled: Abilita il servizio web REST
   label_missing_api_access_key: Chiave di accesso API mancante
-  label_missing_feeds_access_key: Chiave di accesso RSS mancante
+  label_missing_feeds_access_key: Chiave di accesso Atom mancante
   button_show: Mostra
   text_line_separated: Valori multipli permessi (un valore per ogni riga).
   setting_mail_handler_body_delimiters: Tronca email dopo una di queste righe
@@ -1054,8 +1054,8 @@ it:
   label_attribute_of_assigned_to: Assegnatari %{name}
   label_attribute_of_fixed_version: Target version's %{name}
   label_copy_subtasks: Copia sottoattività
-  label_copied_to: copia a
-  label_copied_from: copia da
+  label_copied_to: copia
+  label_copied_from: copiata da
   label_any_issues_in_project: ogni segnalazione del progetto
   label_any_issues_not_in_project: ogni segnalazione non nel progetto
   field_private_notes: Note private
@@ -1083,5 +1083,38 @@ it:
   setting_jsonp_enabled: Abilita supporto a JSONP
   field_inherit_members: Eredita membri
   field_closed_on: Chiuso
+  field_generate_password: Generate password
   setting_default_projects_tracker_ids: Trackers di default per nuovi progetti
   label_total_time: Totale
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  notice_account_register_done: Account was successfully created. An email containing
+    the instructions to activate your account was sent to %{email}.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users

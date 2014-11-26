@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -30,6 +30,10 @@ class Redmine::WikiFormattingTest < ActiveSupport::TestCase
     assert_equal Redmine::WikiFormatting::NullFormatter::Helper, Redmine::WikiFormatting.helper_for('')
   end
 
+  def test_formats_for_select
+    assert_include ['Textile', 'textile'], Redmine::WikiFormatting.formats_for_select
+  end
+
   def test_should_link_urls_and_email_addresses
     raw = <<-DIFF
 This is a sample *text* with a link: http://www.redmine.org
@@ -42,6 +46,19 @@ and an email address <a class="email" href="mailto:foo@example.net">foo@example.
 EXPECTED
 
     assert_equal expected.gsub(%r{[\r\n\t]}, ''), Redmine::WikiFormatting::NullFormatter::Formatter.new(raw).to_html.gsub(%r{[\r\n\t]}, '')
+  end
+
+  def test_links_separated_with_line_break_should_link
+    raw = <<-DIFF
+link: https://www.redmine.org
+http://www.redmine.org
+DIFF
+
+    expected = <<-EXPECTED
+<p>link: <a class="external" href="https://www.redmine.org">https://www.redmine.org</a><br />
+<a class="external" href="http://www.redmine.org">http://www.redmine.org</a></p>
+EXPECTED
+    
   end
 
   def test_supports_section_edit

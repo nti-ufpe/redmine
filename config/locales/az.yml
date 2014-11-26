@@ -196,6 +196,7 @@ az:
         not_same_project: "təkcə bir layihəyə aid deyildir"
         circular_dependency: "Belə əlaqə dövri asılılığa gətirib çıxaracaq"
         cant_link_an_issue_with_a_descendant: "Tapşırıq özünün alt tapşırığı ilə əlaqəli ola bilməz"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   support:
     array:
@@ -383,9 +384,9 @@ az:
   general_csv_decimal_separator: ','
   general_csv_encoding: UTF-8
   general_csv_separator: ';'
+  general_pdf_fontname: freesans
   general_first_day_of_week: '1'
   general_lang_name: 'Azerbaijanian (Azeri)'
-  general_pdf_encoding: UTF-8
   general_text_no: 'xeyr'
   general_text_No: 'Xeyr'
   general_text_yes: 'bəli'
@@ -488,8 +489,8 @@ az:
   label_equals: sayılır
   label_example: Nümunə
   label_export_to: ixrac etmək 
-  label_feed_plural: RSS
-  label_feeds_access_key_created_on: "RSS-ə giriş açarı %{value} əvvəl yaradılıb"
+  label_feed_plural: Atom
+  label_feeds_access_key_created_on: "Atom-ə giriş açarı %{value} əvvəl yaradılıb"
   label_f_hour: "%{value} saat"
   label_f_hour_plural: "%{value} saat"
   label_file_added: Fayl əlavə edilib
@@ -764,7 +765,7 @@ az:
   notice_email_sent: "Məktub göndərilib %{value}"
   notice_failed_to_save_issues: "Seçilən %{total} içərisindən %{count} bəndləri saxlamaq mümkün olmadı: %{ids}."
   notice_failed_to_save_members: "İştirakçını (ları) yadda saxlamaq mümkün olmadı: %{errors}."
-  notice_feeds_access_key_reseted: Sizin RSS giriş açarınız sıfırlanmışdır.
+  notice_feeds_access_key_reseted: Sizin Atom giriş açarınız sıfırlanmışdır.
   notice_file_not_found: Daxil olmağa çalışdığınız səhifə mövcud deyildir və ya silinib.
   notice_locking_conflict: İnformasiya digər istifadəçi tərəfindən yenilənib.
   notice_no_issue_selected: "Heç bir tapşırıq seçilməyib! Xahiş edirik, redaktə etmək istədiyiniz tapşırığı qeyd edin."
@@ -856,7 +857,7 @@ az:
   setting_display_subprojects_issues: Susmaya görə altlayihələrin əks olunması
   setting_emails_footer: Məktubun sətiraltı qeydləri
   setting_enabled_scm: Daxil edilən SCM
-  setting_feeds_limit: RSS axını üçün başlıqların sayının məhdudlaşdırılması
+  setting_feeds_limit: Atom axını üçün başlıqların sayının məhdudlaşdırılması
   setting_file_max_size_displayed: Əks olunma üçün mətn faylının maksimal ölçüsü
   setting_gravatar_enabled: İstifadəçi avatarını Gravatar-dan istifadə etmək
   setting_host_name: Kompyuterin adı
@@ -995,12 +996,12 @@ az:
   permission_view_issues: Tapşırıqlara baxış
   label_display_used_statuses_only: Yalnız bu trekerdə istifadə olunan statusları əks etdirmək
   label_api_access_key_created_on: API-yə giriş açarı %{value} əvvəl aradılıb
-  label_feeds_access_key: RSS giriş açarı
+  label_feeds_access_key: Atom giriş açarı
   notice_api_access_key_reseted: Sizin API giriş açarınız sıfırlanıb.
   setting_rest_api_enabled: REST veb-servisini qoşmaq
   button_show: Göstərmək
   label_missing_api_access_key: API-yə giriş açarı mövcud deyildir
-  label_missing_feeds_access_key: RSS-ə giriş açarı mövcud deyildir
+  label_missing_feeds_access_key: Atom-ə giriş açarı mövcud deyildir
   setting_mail_handler_body_delimiters: Bu sətirlərin birindən sonra məktubu qısaltmaq
   permission_add_subprojects: Alt layihələrin yaradılması
   label_subproject_new: Yeni alt layihə
@@ -1182,5 +1183,36 @@ az:
   label_any_issues_not_in_project: any issues not in project
   label_cross_project_tree: With project tree
   field_closed_on: Closed
+  field_generate_password: Generate password
   setting_default_projects_tracker_ids: Default trackers for new projects
   label_total_time: Cəmi
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users

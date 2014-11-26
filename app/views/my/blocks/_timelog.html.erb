@@ -1,8 +1,17 @@
-<h3><%=l(:label_spent_time)%> (<%= l(:label_last_n_days, 7) %>)</h3>
+<h3>
+  <%= link_to l(:label_spent_time), time_entries_path(:user_id => 'me') %>
+  (<%= l(:label_last_n_days, 7) %>)
+</h3>
 <%
 entries = timelog_items
 entries_by_day = entries.group_by(&:spent_on)
 %>
+
+<% if User.current.allowed_to?(:log_time, nil, :global => true) %>
+<div class="contextual">
+  <%= link_to l(:button_log_time), new_time_entry_path, :class => "icon icon-add" %>
+</div>
+<% end %>
 
 <div class="total-hours">
 <p><%= l(:label_total_time) %>: <%= html_hours("%.2f" % entries.sum(&:hours).to_f) %></p>
@@ -31,7 +40,7 @@ entries_by_day = entries.group_by(&:spent_on)
     <td class="subject"><%=h entry.project %> <%= h(' - ') + link_to_issue(entry.issue, :truncate => 50) if entry.issue %></td>
     <td class="comments"><%=h entry.comments %></td>
     <td class="hours"><%= html_hours("%.2f" % entry.hours) %></td>
-    <td align="center">
+    <td class="buttons">
     <% if entry.editable_by?(@user) -%>
         <%= link_to image_tag('edit.png'), {:controller => 'timelog', :action => 'edit', :id => entry},
                                            :title => l(:button_edit) %>

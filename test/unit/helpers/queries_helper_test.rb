@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,41 +29,25 @@ class QueriesHelperTest < ActionView::TestCase
            :projects_trackers,
            :custom_fields_trackers
 
-  def test_filters_options_should_be_ordered
-    set_language_if_valid 'en'
+  def test_filters_options_has_empty_item
     query = IssueQuery.new
     filter_count = query.available_filters.size
     fo = filters_options(query)
     assert_equal filter_count + 1, fo.size
     assert_equal [], fo[0]
-
-    expected_order = [
-      "Status",
-      "Project",
-      "Tracker",
-      "Priority"
-    ]
-    assert_equal expected_order, (fo.map(&:first) & expected_order)
   end
 
-  def test_filters_options_should_be_ordered_with_custom_fields
-    set_language_if_valid 'en'
-    field = UserCustomField.create!(
-              :name => 'order test', :field_format => 'string',
-              :is_for_all => true, :is_filter => true
-            )
-    query = IssueQuery.new
-    filter_count = query.available_filters.size
-    fo = filters_options(query)
-    assert_equal filter_count + 1, fo.size
-
-    expected_order = [
-      "Searchable field",
-      "Database",
-      "Project's Development status",
-      "Author's order test",
-      "Assignee's order test"
+  def test_query_to_csv_should_translate_boolean_custom_field_values
+    f = IssueCustomField.generate!(:field_format => 'bool', :name => 'Boolean', :is_for_all => true, :trackers => Tracker.all)
+    issues = [
+      Issue.generate!(:project_id => 1, :tracker_id => 1, :custom_field_values => {f.id.to_s => '0'}),
+      Issue.generate!(:project_id => 1, :tracker_id => 1, :custom_field_values => {f.id.to_s => '1'})
     ]
-    assert_equal expected_order, (fo.map(&:first) & expected_order)
+
+    with_locale 'fr' do
+      csv = query_to_csv(issues, IssueQuery.new, :columns => 'all')
+      assert_include "Oui", csv
+      assert_include "Non", csv
+    end
   end
 end

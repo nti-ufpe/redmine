@@ -130,6 +130,7 @@ el:
         not_same_project: "δεν ανήκει στο ίδιο έργο"
         circular_dependency: "Αυτή η σχέση θα δημιουργήσει κυκλικές εξαρτήσεις"
         cant_link_an_issue_with_a_descendant: "An issue can not be linked to one of its subtasks"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   actionview_instancetag_blank_option: Παρακαλώ επιλέξτε
 
@@ -141,7 +142,7 @@ el:
   general_csv_separator: ','
   general_csv_decimal_separator: '.'
   general_csv_encoding: UTF-8
-  general_pdf_encoding: UTF-8
+  general_pdf_fontname: freesans
   general_first_day_of_week: '7'
 
   notice_account_updated: Ο λογαριασμός ενημερώθηκε επιτυχώς.
@@ -162,7 +163,7 @@ el:
   notice_not_authorized: Δεν έχετε δικαίωμα πρόσβασης σε αυτή τη σελίδα.
   notice_email_sent: "Ένα μήνυμα ηλεκτρονικού ταχυδρομείου εστάλη στο %{value}"
   notice_email_error: "Σφάλμα κατά την αποστολή του μηνύματος στο (%{value})"
-  notice_feeds_access_key_reseted:  Έγινε επαναφορά στο κλειδί πρόσβασης RSS.
+  notice_feeds_access_key_reseted:  Έγινε επαναφορά στο κλειδί πρόσβασης Atom.
   notice_failed_to_save_issues: "Αποτυχία αποθήκευσης %{count} θεμα(των) από τα %{total} επιλεγμένα: %{ids}."
   notice_no_issue_selected: "Κανένα θέμα δεν είναι επιλεγμένο! Παρακαλούμε, ελέγξτε τα θέματα που θέλετε να επεξεργαστείτε."
   notice_account_pending: "Ο λογαριασμός σας έχει δημιουργηθεί και είναι σε στάδιο έγκρισης από τον διαχειριστή."
@@ -663,7 +664,7 @@ el:
   label_language_based: Με βάση τη γλώσσα του χρήστη
   label_sort_by: "Ταξινόμηση ανά %{value}"
   label_send_test_email: Αποστολή δοκιμαστικού email
-  label_feeds_access_key_created_on: "το κλειδί πρόσβασης RSS δημιουργήθηκε πριν από %{value}"
+  label_feeds_access_key_created_on: "το κλειδί πρόσβασης Atom δημιουργήθηκε πριν από %{value}"
   label_module_plural: Μονάδες
   label_added_time_by: "Προστέθηκε από τον %{author} πριν από %{age}"
   label_updated_time_by: "Ενημερώθηκε από τον %{author} πριν από %{age}"
@@ -873,11 +874,11 @@ el:
   label_revision_id: Revision %{value}
   label_api_access_key: API access key
   label_api_access_key_created_on: API access key created %{value} ago
-  label_feeds_access_key: RSS access key
+  label_feeds_access_key: Atom access key
   notice_api_access_key_reseted: Your API access key was reset.
   setting_rest_api_enabled: Enable REST web service
   label_missing_api_access_key: Missing an API access key
-  label_missing_feeds_access_key: Missing a RSS access key
+  label_missing_feeds_access_key: Missing a Atom access key
   button_show: Show
   text_line_separated: Multiple values allowed (one line for each value).
   setting_mail_handler_body_delimiters: Truncate emails after one of these lines
@@ -1082,8 +1083,39 @@ el:
   setting_jsonp_enabled: Enable JSONP support
   field_inherit_members: Inherit members
   field_closed_on: Closed
+  field_generate_password: Generate password
   setting_default_projects_tracker_ids: Default trackers for new projects
   label_total_time: Σύνολο
   text_scm_config: You can configure your SCM commands in config/configuration.yml. Please restart the application after editing it.
   text_scm_command_not_available: SCM command is not available. Please check settings on the administration panel.
   setting_emails_header: Email header
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users

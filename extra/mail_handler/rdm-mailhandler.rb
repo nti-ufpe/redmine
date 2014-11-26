@@ -1,4 +1,20 @@
 #!/usr/bin/env ruby
+# Redmine - project management software
+# Copyright (C) 2006-2014  Jean-Philippe Lang
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 require 'net/http'
 require 'net/https'
@@ -34,7 +50,7 @@ class RedmineMailHandler
     optparse = OptionParser.new do |opts|
       opts.banner = "Usage: rdm-mailhandler.rb [options] --url=<Redmine URL> --key=<API key>"
       opts.separator("")
-      opts.separator("Reads an email from standard input and forward it to a Redmine server through a HTTP request.")
+      opts.separator("Reads an email from standard input and forwards it to a Redmine server through a HTTP request.")
       opts.separator("")
       opts.separator("Required arguments:")
       opts.on("-u", "--url URL",              "URL of the Redmine server") {|v| self.url = v}
@@ -43,10 +59,10 @@ class RedmineMailHandler
       opts.separator("General options:")
       opts.on("--no-permission-check",        "disable permission checking when receiving",
                                               "the email") {self.no_permission_check = '1'}
-      opts.on("--key-file FILE",              "path to a file that contains the Redmine",
-                                              "API key (use this option instead of --key",
-                                              "if you don't the key to appear in the",
-                                              "command line)") {|v| read_key_from_file(v)}
+      opts.on("--key-file FILE",              "full path to a file that contains your Redmine",
+                                              "API key (use this option instead of --key if",
+                                              "you don't want the key to appear in the command",
+                                              "line)") {|v| read_key_from_file(v)}
       opts.on("--no-check-certificate",       "do not check server certificate") {self.no_check_certificate = true}
       opts.on("-h", "--help",                 "show this help") {puts opts; exit 1}
       opts.on("-v", "--verbose",              "show extra information") {self.verbose = true}
@@ -76,7 +92,7 @@ class RedmineMailHandler
                                               "ATTRS is a comma separated list of attributes") {|v| self.allow_override = v}
       opts.separator("")
       opts.separator("Examples:")
-      opts.separator("No project specified. Emails MUST contain the 'Project' keyword:")
+      opts.separator("No project specified, emails MUST contain the 'Project' keyword:")
       opts.separator("  rdm-mailhandler.rb --url http://redmine.domain.foo --key secret")
       opts.separator("")
       opts.separator("Fixed project and default tracker specified, but emails can override")

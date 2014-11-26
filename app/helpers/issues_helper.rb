@@ -1,7 +1,7 @@
 # encoding: utf-8
 #
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -94,6 +94,20 @@ module IssuesHelper
     s.html_safe
   end
 
+  # Returns an array of error messages for bulk edited issues
+  def bulk_edit_error_messages(issues)
+    messages = {}
+    issues.each do |issue|
+      issue.errors.full_messages.each do |message|
+        messages[message] ||= []
+        messages[message] << issue
+      end
+    end
+    messages.map { |message, issues|
+      "#{message}: " + issues.map {|i| "##{i.id}"}.join(', ')
+    }
+ end
+
   # Returns a link for adding a new subtask to the given issue
   def link_to_new_subtask(issue)
     attrs = {
@@ -146,18 +160,20 @@ module IssuesHelper
   end
 
   def render_custom_fields_rows(issue)
-    return if issue.custom_field_values.empty?
+    values = issue.visible_custom_field_values
+    return if values.empty?
     ordered_values = []
-    half = (issue.custom_field_values.size / 2.0).ceil
+    half = (values.size / 2.0).ceil
     half.times do |i|
-      ordered_values << issue.custom_field_values[i]
-      ordered_values << issue.custom_field_values[i + half]
+      ordered_values << values[i]
+      ordered_values << values[i + half]
     end
     s = "<tr>\n"
     n = 0
     ordered_values.compact.each do |value|
+      css = "cf_#{value.custom_field.id}"
       s << "</tr>\n<tr>\n" if n > 0 && (n % 2) == 0
-      s << "\t<th>#{ h(value.custom_field.name) }:</th><td>#{ simple_format_without_paragraph(h(show_value(value))) }</td>\n"
+      s << "\t<th class=\"#{css}\">#{ h(value.custom_field.name) }:</th><td class=\"#{css}\">#{ h(show_value(value)) }</td>\n"
       n += 1
     end
     s << "</tr>\n"
@@ -184,34 +200,58 @@ module IssuesHelper
 
   def sidebar_queries
     unless @sidebar_queries
-      @sidebar_queries = IssueQuery.visible.all(
-        :order => "#{Query.table_name}.name ASC",
+      @sidebar_queries = IssueQuery.visible.
+        order("#{Query.table_name}.name ASC").
         # Project specific queries and global queries
-        :conditions => (@project.nil? ? ["project_id IS NULL"] : ["project_id IS NULL OR project_id = ?", @project.id])
-      )
+        where(@project.nil? ? ["project_id IS NULL"] : ["project_id IS NULL OR project_id = ?", @project.id]).
+        all
     end
     @sidebar_queries
   end
 
   def query_links(title, queries)
+    return '' if queries.empty?
     # links to #index on issues/show
     url_params = controller_name == 'issues' ? {:controller => 'issues', :action => 'index', :project_id => @project} : params
 
-    content_tag('h3', h(title)) +
-      queries.collect {|query|
-          css = 'query'
-          css << ' selected' if query == @query
-          link_to(h(query.name), url_params.merge(:query_id => query), :class => css)
-        }.join('<br />').html_safe
+    content_tag('h3', title) + "\n" +
+      content_tag('ul',
+        queries.collect {|query|
+            css = 'query'
+            css << ' selected' if query == @query
+            content_tag('li', link_to(query.name, url_params.merge(:query_id => query), :class => css))
+          }.join("\n").html_safe,
+        :class => 'queries'
+      ) + "\n"
   end
 
   def render_sidebar_queries
     out = ''.html_safe
-    queries = sidebar_queries.select {|q| !q.is_public?}
-    out << query_links(l(:label_my_queries), queries) if queries.any?
-    queries = sidebar_queries.select {|q| q.is_public?}
-    out << query_links(l(:label_query_plural), queries) if queries.any?
+    out << query_links(l(:label_my_queries), sidebar_queries.select(&:is_private?))
+    out << query_links(l(:label_query_plural), sidebar_queries.reject(&:is_private?))
     out
+  end
+
+  def email_issue_attributes(issue, user)
+    items = []
+    %w(author status priority assigned_to category fixed_version).each do |attribute|
+      unless issue.disabled_core_fields.include?(attribute+"_id")
+        items << "#{l("field_#{attribute}")}: #{issue.send attribute}"
+      end
+    end
+    issue.visible_custom_field_values(user).each do |value|
+      items << "#{value.custom_field.name}: #{show_value(value, false)}"
+    end
+    items
+  end
+
+  def render_email_issue_attributes(issue, user, html=false)
+    items = email_issue_attributes(issue, user)
+    if html
+      content_tag('ul', items.map{|s| content_tag('li', s)}.join("\n").html_safe)
+    else
+      items.map{|s| "* #{s}"}.join("\n")
+    end
   end
 
   # Returns the textual representation of a journal details
@@ -222,23 +262,23 @@ module IssuesHelper
     values_by_field = {}
     details.each do |detail|
       if detail.property == 'cf'
-        field_id = detail.prop_key
-        field = CustomField.find_by_id(field_id)
+        field = detail.custom_field
         if field && field.multiple?
-          values_by_field[field_id] ||= {:added => [], :deleted => []}
+          values_by_field[field] ||= {:added => [], :deleted => []}
           if detail.old_value
-            values_by_field[field_id][:deleted] << detail.old_value
+            values_by_field[field][:deleted] << detail.old_value
           end
           if detail.value
-            values_by_field[field_id][:added] << detail.value
+            values_by_field[field][:added] << detail.value
           end
           next
         end
       end
       strings << show_detail(detail, no_html, options)
     end
-    values_by_field.each do |field_id, changes|
-      detail = JournalDetail.new(:property => 'cf', :prop_key => field_id)
+    values_by_field.each do |field, changes|
+      detail = JournalDetail.new(:property => 'cf', :prop_key => field.id.to_s)
+      detail.instance_variable_set "@custom_field", field
       if changes[:added].any?
         detail.value = changes[:added]
         strings << show_detail(detail, no_html, options)
@@ -281,15 +321,27 @@ module IssuesHelper
         old_value = l(detail.old_value == "0" ? :general_text_No : :general_text_Yes) unless detail.old_value.blank?
       end
     when 'cf'
-      custom_field = CustomField.find_by_id(detail.prop_key)
+      custom_field = detail.custom_field
       if custom_field
         multiple = custom_field.multiple?
         label = custom_field.name
-        value = format_value(detail.value, custom_field.field_format) if detail.value
-        old_value = format_value(detail.old_value, custom_field.field_format) if detail.old_value
+        value = format_value(detail.value, custom_field) if detail.value
+        old_value = format_value(detail.old_value, custom_field) if detail.old_value
       end
     when 'attachment'
       label = l(:label_attachment)
+    when 'relation'
+      if detail.value && !detail.old_value
+        rel_issue = Issue.visible.find_by_id(detail.value)
+        value = rel_issue.nil? ? "#{l(:label_issue)} ##{detail.value}" :
+                  (no_html ? rel_issue : link_to_issue(rel_issue, :only_path => options[:only_path]))
+      elsif detail.old_value && !detail.value
+        rel_issue = Issue.visible.find_by_id(detail.old_value)
+        old_value = rel_issue.nil? ? "#{l(:label_issue)} ##{detail.old_value}" :
+                          (no_html ? rel_issue : link_to_issue(rel_issue, :only_path => options[:only_path]))
+      end
+      relation_type = IssueRelation::TYPES[detail.prop_key]
+      label = l(relation_type[:name]) if relation_type
     end
     call_hook(:helper_issues_show_detail_after_setting,
               {:detail => detail, :label => label, :value => value, :old_value => old_value })
@@ -301,7 +353,9 @@ module IssuesHelper
     unless no_html
       label = content_tag('strong', label)
       old_value = content_tag("i", h(old_value)) if detail.old_value
-      old_value = content_tag("del", old_value) if detail.old_value and detail.value.blank?
+      if detail.old_value && detail.value.blank? && detail.property != 'relation'
+        old_value = content_tag("del", old_value)
+      end
       if detail.property == 'attachment' && !value.blank? && atta = Attachment.find_by_id(detail.prop_key)
         # Link to the attachment if it has not been removed
         value = link_to_attachment(atta, :download => true, :only_path => options[:only_path])
@@ -337,7 +391,7 @@ module IssuesHelper
         else
           l(:text_journal_set_to, :label => label, :value => value).html_safe
         end
-      when 'attachment'
+      when 'attachment', 'relation'
         l(:text_journal_added, :label => label, :value => value).html_safe
       end
     else

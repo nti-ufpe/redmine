@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -50,6 +50,8 @@ module Redmine #:nodoc:
     self.public_directory = File.join(Rails.root, 'public', 'plugin_assets')
 
     @registered_plugins = {}
+    @used_partials = {}
+
     class << self
       attr_reader :registered_plugins
       private :new
@@ -64,19 +66,22 @@ module Redmine #:nodoc:
         end
       end
     end
-    def_field :name, :description, :url, :author, :author_url, :version, :settings
+    def_field :name, :description, :url, :author, :author_url, :version, :settings, :directory
     attr_reader :id
 
     # Plugin constructor
     def self.register(id, &block)
       p = new(id)
       p.instance_eval(&block)
+
       # Set a default name if it was not provided during registration
       p.name(id.to_s.humanize) if p.name.nil?
+      # Set a default directory if it was not provided during registration
+      p.directory(File.join(self.directory, id.to_s)) if p.directory.nil?
 
       # Adds plugin locales if any
       # YAML translation files should be found under <plugin>/config/locales/
-      ::I18n.load_path += Dir.glob(File.join(p.directory, 'config', 'locales', '*.yml'))
+      Rails.application.config.i18n.load_path += Dir.glob(File.join(p.directory, 'config', 'locales', '*.yml'))
 
       # Prepends the app/views directory of the plugin to the view path
       view_path = File.join(p.directory, 'app', 'views')
@@ -88,6 +93,15 @@ module Redmine #:nodoc:
       # Adds the app/{controllers,helpers,models} directories of the plugin to the autoload path
       Dir.glob File.expand_path(File.join(p.directory, 'app', '{controllers,helpers,models}')) do |dir|
         ActiveSupport::Dependencies.autoload_paths += [dir]
+      end
+
+      # Warn for potential settings[:partial] collisions
+      if p.configurable?
+        partial = p.settings[:partial]
+        if @used_partials[partial]
+          Rails.logger.warn "WARNING: settings partial '#{partial}' is declared in '#{p.id}' plugin but it is already used by plugin '#{@used_partials[partial]}'. Only one settings view will be used. You may want to contact those plugins authors to fix this."
+        end
+        @used_partials[partial] = p.id
       end
 
       registered_plugins[id] = p
@@ -108,6 +122,12 @@ module Redmine #:nodoc:
     # It doesn't unload installed plugins
     def self.clear
       @registered_plugins = {}
+    end
+
+    # Removes a plugin from the registered plugins
+    # It doesn't unload the plugin
+    def self.unregister(id)
+      @registered_plugins.delete(id)
     end
 
     # Checks if a plugin is installed
@@ -135,10 +155,6 @@ module Redmine #:nodoc:
 
     def initialize(id)
       @id = id.to_sym
-    end
-
-    def directory
-      File.join(self.class.directory, id.to_s)
     end
 
     def public_directory
@@ -326,7 +342,7 @@ module Redmine #:nodoc:
     # Associated model(s) must implement the find_events class method.
     # ActiveRecord models can use acts_as_activity_provider as a way to implement this class method.
     #
-    # The following call should return all the scrum events visible by current user that occured in the 5 last days:
+    # The following call should return all the scrum events visible by current user that occurred in the 5 last days:
     #   Meeting.find_events('scrums', User.current, 5.days.ago, Date.today)
     #   Meeting.find_events('scrums', User.current, 5.days.ago, Date.today, :project => foo) # events for project foo only
     #
@@ -444,7 +460,7 @@ module Redmine #:nodoc:
     class Migrator < ActiveRecord::Migrator
       # We need to be able to set the 'current' plugin being migrated.
       cattr_accessor :current_plugin
-    
+
       class << self
         # Runs the migrations from a plugin, up (or down) to the version given
         def migrate_plugin(plugin, version)
@@ -452,7 +468,7 @@ module Redmine #:nodoc:
           return if current_version(plugin) == version
           migrate(plugin.migration_directory, version)
         end
-        
+
         def current_version(plugin=current_plugin)
           # Delete migrations that don't match .. to_i will work because the number comes first
           ::ActiveRecord::Base.connection.select_values(
@@ -460,14 +476,14 @@ module Redmine #:nodoc:
           ).delete_if{ |v| v.match(/-#{plugin.id}/) == nil }.map(&:to_i).max || 0
         end
       end
-           
+
       def migrated
         sm_table = self.class.schema_migrations_table_name
         ::ActiveRecord::Base.connection.select_values(
           "SELECT version FROM #{sm_table}"
         ).delete_if{ |v| v.match(/-#{current_plugin.id}/) == nil }.map(&:to_i).sort
       end
-      
+
       def record_version_state_after_migrating(version)
         super(version.to_s + "-" + current_plugin.id.to_s)
       end

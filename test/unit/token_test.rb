@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -94,11 +94,6 @@ class TokenTest < ActiveSupport::TestCase
   def test_find_token_should_return_nil_with_wrong_action
     token = Token.create!(:user_id => 1, :action => 'feeds')
     assert_nil Token.find_token('api', token.value)
-  end
-
-  def test_find_token_should_return_nil_with_wrong_action
-    token = Token.create!(:user_id => 1, :action => 'feeds')
-    assert_nil Token.find_token('api', Token.generate_token_value)
   end
 
   def test_find_token_should_return_nil_without_user

@@ -146,6 +146,7 @@ et:
         not_same_project: "ei kuulu sama projekti juurde"
         circular_dependency: "See suhe looks vastastikuse sõltuvuse"
         cant_link_an_issue_with_a_descendant: "Teemat ei saa sidustada tema enda alamteemaga"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   actionview_instancetag_blank_option: "Palun vali"
 
@@ -157,7 +158,7 @@ et:
   general_csv_separator: ","
   general_csv_decimal_separator: "."
   general_csv_encoding: ISO-8859-13
-  general_pdf_encoding: UTF-8
+  general_pdf_fontname: freesans
   general_first_day_of_week: "1"
 
   notice_account_updated: "Konto uuendamine õnnestus."
@@ -179,7 +180,7 @@ et:
   notice_not_authorized_archived_project: "See projekt on arhiveeritud."
   notice_email_sent: "%{value}-le saadeti kiri"
   notice_email_error: "Kirja saatmisel tekkis viga (%{value})"
-  notice_feeds_access_key_reseted: "Sinu RSS juurdepääsuvõti nulliti."
+  notice_feeds_access_key_reseted: "Sinu Atom juurdepääsuvõti nulliti."
   notice_api_access_key_reseted: "Sinu API juurdepääsuvõti nulliti."
   notice_failed_to_save_issues: "%{count} teemat %{total}-st ei õnnestunud salvestada: %{ids}."
   notice_failed_to_save_time_entries: "%{count} ajakulu kannet %{total}-st ei õnnestunud salvestada: %{ids}."
@@ -772,9 +773,9 @@ et:
   label_language_based: "Kasutaja keele põhjal"
   label_sort_by: "Sorteeri %{value} järgi"
   label_send_test_email: "Saada kontrollkiri"
-  label_feeds_access_key: "RSS juurdepääsuvõti"
-  label_missing_feeds_access_key: "RSS juurdepääsuvõti on puudu"
-  label_feeds_access_key_created_on: "RSS juurdepääsuvõti loodi %{value} tagasi"
+  label_feeds_access_key: "Atom juurdepääsuvõti"
+  label_missing_feeds_access_key: "Atom juurdepääsuvõti on puudu"
+  label_feeds_access_key_created_on: "Atom juurdepääsuvõti loodi %{value} tagasi"
   label_module_plural: "Moodulid"
   label_added_time_by: "Lisatud %{author} poolt %{age} tagasi"
   label_updated_time_by: "Uuendatud %{author} poolt %{age} tagasi"
@@ -1098,5 +1099,36 @@ et:
   setting_jsonp_enabled: Enable JSONP support
   field_inherit_members: Inherit members
   field_closed_on: Closed
+  field_generate_password: Generate password
   setting_default_projects_tracker_ids: Default trackers for new projects
   label_total_time: "Kokku"
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users

@@ -2,6 +2,8 @@ syntax: glob
 
 .project
 .loadpath
+.powrc
+.rvmrc
 config/additional_environment.rb
 config/configuration.yml
 config/database.yml
@@ -18,7 +20,7 @@ lib/redmine/scm/adapters/mercurial/redminehelper.pyo
 log/*.log*
 log/mongrel_debug
 public/dispatch.*
-public/plugin_assets
+public/plugin_assets/*
 tmp/*
 tmp/cache/*
 tmp/pdf/*

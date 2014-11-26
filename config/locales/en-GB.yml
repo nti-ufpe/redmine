@@ -133,6 +133,7 @@ en-GB:
         not_same_project: "doesn't belong to the same project"
         circular_dependency: "This relation would create a circular dependency"
         cant_link_an_issue_with_a_descendant: "An issue cannot be linked to one of its subtasks"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   actionview_instancetag_blank_option: Please select
 
@@ -144,14 +145,14 @@ en-GB:
   general_csv_separator: ','
   general_csv_decimal_separator: '.'
   general_csv_encoding: ISO-8859-1
-  general_pdf_encoding: UTF-8
+  general_pdf_fontname: freesans
   general_first_day_of_week: '1'
 
   notice_account_updated: Account was successfully updated.
   notice_account_invalid_creditentials: Invalid user or password
   notice_account_password_updated: Password was successfully updated.
   notice_account_wrong_password: Wrong password
-  notice_account_register_done: Account was successfully created. To activate your account, click on the link that was emailed to you.
+  notice_account_register_done: Account was successfully created. An email containing the instructions to activate your account was sent to %{email}.
   notice_account_unknown_email: Unknown user.
   notice_can_t_change_password: This account uses an external authentication source. Impossible to change the password.
   notice_account_lost_email_sent: An email with instructions to choose a new password has been sent to you.
@@ -166,7 +167,7 @@ en-GB:
   notice_not_authorized_archived_project: The project you're trying to access has been archived.
   notice_email_sent: "An email was sent to %{value}"
   notice_email_error: "An error occurred while sending mail (%{value})"
-  notice_feeds_access_key_reseted: Your RSS access key was reset.
+  notice_feeds_access_key_reseted: Your Atom access key was reset.
   notice_api_access_key_reseted: Your API access key was reset.
   notice_failed_to_save_issues: "Failed to save %{count} issue(s) on %{total} selected: %{ids}."
   notice_failed_to_save_members: "Failed to save member(s): %{errors}."
@@ -727,9 +728,9 @@ en-GB:
   label_language_based: Based on user's language
   label_sort_by: "Sort by %{value}"
   label_send_test_email: Send a test email
-  label_feeds_access_key: RSS access key
-  label_missing_feeds_access_key: Missing a RSS access key
-  label_feeds_access_key_created_on: "RSS access key created %{value} ago"
+  label_feeds_access_key: Atom access key
+  label_missing_feeds_access_key: Missing a Atom access key
+  label_feeds_access_key_created_on: "Atom access key created %{value} ago"
   label_module_plural: Modules
   label_added_time_by: "Added by %{author} %{age} ago"
   label_updated_time_by: "Updated by %{author} %{age} ago"
@@ -1087,5 +1088,36 @@ en-GB:
   setting_jsonp_enabled: Enable JSONP support
   field_inherit_members: Inherit members
   field_closed_on: Closed
+  field_generate_password: Generate password
   setting_default_projects_tracker_ids: Default trackers for new projects
   label_total_time: Total
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users

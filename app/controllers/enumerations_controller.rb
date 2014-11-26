@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -70,12 +70,10 @@ class EnumerationsController < ApplicationController
       @enumeration.destroy
       redirect_to enumerations_path
       return
-    elsif params[:reassign_to_id]
-      if reassign_to = @enumeration.class.find_by_id(params[:reassign_to_id])
-        @enumeration.destroy(reassign_to)
-        redirect_to enumerations_path
-        return
-      end
+    elsif params[:reassign_to_id].present? && (reassign_to = @enumeration.class.find_by_id(params[:reassign_to_id].to_i))
+      @enumeration.destroy(reassign_to)
+      redirect_to enumerations_path
+      return
     end
     @enumerations = @enumeration.class.system.all - [@enumeration]
   end

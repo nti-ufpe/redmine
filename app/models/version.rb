@@ -1,5 +1,5 @@
 # Redmine - project management software
-# Copyright (C) 2006-2013  Jean-Philippe Lang
+# Copyright (C) 2006-2014  Jean-Philippe Lang
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -40,7 +40,7 @@ class Version < ActiveRecord::Base
     includes(:project).where(Project.allowed_to_condition(args.first || User.current, :view_issues))
   }
 
-  safe_attributes 'name', 
+  safe_attributes 'name',
     'description',
     'effective_date',
     'due_date',
@@ -58,6 +58,10 @@ class Version < ActiveRecord::Base
   # Version files have same visibility as project files
   def attachments_visible?(*args)
     project.present? && project.attachments_visible?(*args)
+  end
+
+  def attachments_deletable?(usr=User.current)
+    project.present? && project.attachments_deletable?(usr)
   end
 
   def start_date
@@ -203,7 +207,7 @@ class Version < ActiveRecord::Base
     ["(CASE WHEN #{table}.effective_date IS NULL THEN 1 ELSE 0 END)", "#{table}.effective_date", "#{table}.name", "#{table}.id"]
   end
 
-  scope :sorted, order(fields_for_order_statement)
+  scope :sorted, lambda { order(fields_for_order_statement) }
 
   # Returns the sharings that +user+ can set the version to
   def allowed_sharings(user = User.current)
@@ -226,13 +230,18 @@ class Version < ActiveRecord::Base
     end
   end
 
+  # Returns true if the version is shared, otherwise false
+  def shared?
+    sharing != 'none'
+  end
+
   private
 
   def load_issue_counts
     unless @issue_count
       @open_issues_count = 0
       @closed_issues_count = 0
-      fixed_issues.count(:all, :group => :status).each do |status, count|
+      fixed_issues.group(:status).count.each do |status, count|
         if status.is_closed?
           @closed_issues_count += count
         else
@@ -256,7 +265,7 @@ class Version < ActiveRecord::Base
 
   # Returns the average estimated time of assigned issues
   # or 1 if no issue has an estimated time
-  # Used to weigth unestimated issues in progress calculation
+  # Used to weight unestimated issues in progress calculation
   def estimated_average
     if @estimated_average.nil?
       average = fixed_issues.average(:estimated_hours).to_f

@@ -134,6 +134,7 @@ sv:
         not_same_project: "tillhör inte samma projekt"
         circular_dependency: "Denna relation skulle skapa ett cirkulärt beroende"
         cant_link_an_issue_with_a_descendant: "Ett ärende kan inte länkas till ett av dess underärenden"
+        earlier_than_minimum_start_date: "cannot be earlier than %{date} because of preceding issues"
 
   direction: ltr
   date:
@@ -182,7 +183,7 @@ sv:
   general_csv_separator: ','
   general_csv_decimal_separator: '.'
   general_csv_encoding: ISO-8859-1
-  general_pdf_encoding: UTF-8
+  general_pdf_fontname: freesans
   general_first_day_of_week: '1'
 
   notice_account_updated: Kontot har uppdaterats
@@ -204,7 +205,7 @@ sv:
   notice_not_authorized_archived_project: Projektet du försöker komma åt har arkiverats.
   notice_email_sent: "Ett mail skickades till %{value}"
   notice_email_error: "Ett fel inträffade när mail skickades (%{value})"
-  notice_feeds_access_key_reseted: Din RSS-nyckel återställdes.
+  notice_feeds_access_key_reseted: Din Atom-nyckel återställdes.
   notice_api_access_key_reseted: Din API-nyckel återställdes.
   notice_failed_to_save_issues: "Misslyckades med att spara %{count} ärende(n) på %{total} valda: %{ids}."
   notice_failed_to_save_time_entries: "Misslyckades med att spara %{count} tidloggning(ar) på %{total} valda: %{ids}."
@@ -374,6 +375,7 @@ sv:
   field_board_parent: Förälderforum
   field_private_notes: Privata anteckningar
   field_inherit_members: Ärv medlemmar
+  field_generate_password: Generera lösenord
 
   setting_app_title: Applikationsrubrik
   setting_app_subtitle: Applikationsunderrubrik
@@ -829,9 +831,9 @@ sv:
   label_language_based: Språkbaserad
   label_sort_by: "Sortera på %{value}"
   label_send_test_email: Skicka testmail
-  label_feeds_access_key: RSS-nyckel
-  label_missing_feeds_access_key: Saknar en RSS-nyckel
-  label_feeds_access_key_created_on: "RSS-nyckel skapad för %{value} sedan"
+  label_feeds_access_key: Atom-nyckel
+  label_missing_feeds_access_key: Saknar en Atom-nyckel
+  label_feeds_access_key_created_on: "Atom-nyckel skapad för %{value} sedan"
   label_module_plural: Moduler
   label_added_time_by: "Tillagd av %{author} för %{age} sedan"
   label_updated_time_by: "Uppdaterad av %{author} för %{age} sedan"
@@ -1125,3 +1127,33 @@ sv:
   description_date_from: Ange startdatum
   description_date_to: Ange slutdatum
   text_repository_identifier_info: 'Endast gemener (a-z), siffror, streck och understreck är tillåtna.<br />När identifieraren sparats kan den inte ändras.'
+  notice_account_not_activated_yet: You haven't activated your account yet. If you want
+    to receive a new activation email, please <a href="%{url}">click this link</a>.
+  notice_account_locked: Your account is locked.
+  label_hidden: Hidden
+  label_visibility_private: to me only
+  label_visibility_roles: to these roles only
+  label_visibility_public: to any users
+  field_must_change_passwd: Must change password at next logon
+  notice_new_password_must_be_different: The new password must be different from the
+    current password
+  setting_mail_handler_excluded_filenames: Exclude attachments by name
+  text_convert_available: ImageMagick convert available (optional)
+  label_link: Link
+  label_only: only
+  label_drop_down_list: drop-down list
+  label_checkboxes: checkboxes
+  label_link_values_to: Link values to URL
+  setting_force_default_language_for_anonymous: Force default language for anonymous
+    users
+  setting_force_default_language_for_loggedin: Force default language for logged-in
+    users
+  label_custom_field_select_type: Select the type of object to which the custom field
+    is to be attached
+  label_issue_assigned_to_updated: Assignee updated
+  label_check_for_updates: Check for updates
+  label_latest_compatible_version: Latest compatible version
+  label_unknown_plugin: Unknown plugin
+  label_radio_buttons: radio buttons
+  label_group_anonymous: Anonymous users
+  label_group_non_member: Non member users
