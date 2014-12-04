@@ -1041,7 +1041,7 @@ pt-BR:
   text_issue_conflict_resolution_cancel: Descartar todas as minhas mudanças e reexibir %{link}
   permission_manage_related_issues: Gerenciar tarefas relacionadas
   field_auth_source_ldap_filter: Filtro LDAP
-  label_search_for_watchers: Procurar por outros observadores para adiconar
+  label_search_for_watchers: Procurar por outros observadores para adicionar
   notice_account_deleted: Sua conta foi excluída permanentemente.
   setting_unsubscribe: Permitir aos usuários excluir sua própria conta
   button_delete_my_account: Excluir minha conta
