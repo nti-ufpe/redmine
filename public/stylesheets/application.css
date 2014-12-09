@@ -305,6 +305,13 @@ span.search_for_watchers a, span.add_attachment a {padding-left:16px; background
   word-wrap: break-word;
 }
 
+/* Modified by Geraldo Gomes - December/2014 */
+/* Alignment correction on screen: 'my account' */
+.tabular em label {
+ margin-top: 20px !important;
+ width:60%;
+}
+
 div.square {
   border: 1px solid #999;
   float: left;
