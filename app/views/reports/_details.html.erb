@@ -1,6 +1,7 @@
 <% if @statuses.empty? or rows.empty? %>
     <p><i><%=l(:label_no_data)%></i></p>
 <% else %>
+<div class="autoscroll">
 <table class="list">
 <thead><tr>
 <th></th>
@@ -25,5 +26,6 @@
 <% end %>
 </tbody>
 </table>
+</div>
 <% end
   reset_cycle %>
