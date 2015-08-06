@@ -1,7 +1,10 @@
+## Project ##
 /.project
 /.loadpath
 /.powrc
 /.rvmrc
+
+## Configuration files ##
 /config/additional_environment.rb
 /config/configuration.yml
 /config/database.yml
@@ -9,15 +12,27 @@
 /config/secrets.yml
 /config/initializers/session_store.rb
 /config/initializers/secret_token.rb
+
+## Coverage ##
 /coverage
+
+## Data base files ##
 /db/*.db
 /db/*.sqlite3
 /db/schema.rb
+
+## General files ##
 /files/*
+
+## Lib files ##
 /lib/redmine/scm/adapters/mercurial/redminehelper.pyc
 /lib/redmine/scm/adapters/mercurial/redminehelper.pyo
+
+## Log files ##
 /log/*.log*
 /log/mongrel_debug
+
+## Plugins and Themes ##
 /plugins/*
 !/plugins/README
 /public/dispatch.*
@@ -26,6 +41,8 @@
 !/public/themes/alternate
 !/public/themes/classic
 !/public/themes/README
+
+## Temporary Files ##
 /tmp/*
 /tmp/cache/*
 /tmp/pdf/*
@@ -33,9 +50,12 @@
 /tmp/sockets/*
 /tmp/test/*
 /tmp/thumbnails/*
+
+## Cache files ## 
 /vendor/cache
 *.rbc
 
+## Bundle and Gemfile ##
 /.bundle
 /Gemfile.lock
 /Gemfile.local
