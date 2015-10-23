@@ -1102,8 +1102,8 @@ pt-BR:
   text_warn_on_leaving_unsaved: "A página atual possui textos não salvos que serão perdidos se você mudar de página."
   text_scm_path_encoding_note: "Padrão: UTF-8"
   text_subversion_repository_note: "Exemplos: arquivo:///, http://, https://, svn://, svn+[tunnelscheme]://"
-  text_git_repository_note: "Repositório de compartilhamento e local (ex: /gitrepo, c:\gitrepo)"
-  text_mercurial_repository_note: "Repositório local (ex: /hgrepo, c:\hgrepo)"
+  text_git_repository_note: Repositório de compartilhamento e local (ex. /gitrepo, c:\gitrepo)
+  text_mercurial_repository_note: Repositório local (ex. /hgrepo, c:\hgrepo)
   text_scm_command: Comando
   text_scm_command_version: Versão
   text_scm_config: "Você pode configurar seus comandos SCM em config/configuration.yml. Favor, reiniciar a aplicação após editá-lo."
