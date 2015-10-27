@@ -179,7 +179,7 @@ pt-BR:
   notice_locking_conflict: Dados atualizados por outro usuário.
   notice_not_authorized: Você não tem autorização para acessar essa página.
   notice_not_authorized_archived_project: O projeto que você está tentando acessar foi arquivado.
-  notice_email_sent: "Email enviado para %{value}"
+  notice_email_sent: "Email enviado de %{value}"
   notice_email_error: "Um erro ocorreu durante o envio do email (%{value})"
   notice_feeds_access_key_reseted: Sua chave de acesso Atom foi reconfigurada.
   notice_api_access_key_reseted: Sua chave de acesso API foi reconfigurada.
@@ -207,7 +207,7 @@ pt-BR:
   error_issue_not_found_in_project: 'A tarefa não foi encontrada ou pertence a outro projeto'
   error_no_tracker_in_project: 'Nenhum tipo de tarefa associado ao projeto. Favor, checar as Configurações do projeto.'
   error_no_default_issue_status: 'Nenhum situação de tarefa definido. Favor, checar sua configuração (Ir em "Administração -> Status das tarefas").'
-  error_can_not_delete_custom_field: Não é possível remover o campo customizado
+  error_can_not_delete_custom_field: Não é possível remover o campo personalizado
   error_can_not_delete_tracker: "Esse tipo de tarefa contém tarefas e não pode ser removido."
   error_can_not_remove_role: "Esse papel está em uso e não pode ser removido."
   error_can_not_reopen_issue_on_closed_version: 'Tarefa atribuída a versão fechada não pode ser reaberta.'
@@ -268,7 +268,7 @@ pt-BR:
   field_is_closed: Tarefa concluída
   field_is_default: Valor padrão
   field_tracker: Tipo de Tarefa
-  field_subject: Assunto
+  field_subject: Título
   field_due_date: Data prevista
   field_assigned_to: Atribuída para
   field_priority: Prioridade
@@ -329,8 +329,8 @@ pt-BR:
   field_watcher: Observador
   field_identity_url: OpenID URL
   field_content: Conteúdo
-  field_group_by: Resultados de grupo por
-  field_sharing: Compartilhado
+  field_group_by: Agrupar por
+  field_sharing: Compartilhada
   field_parent_issue: Tarefa principal
   field_member_of_group: "Atribuído a grupo"
   field_assigned_to_role: "Atribuído a papel"
@@ -349,7 +349,7 @@ pt-BR:
   field_multiple: Múltiplos valores
   field_auth_source_ldap_filter: Filtro LDAP
   field_core_fields: Campos padrões
-  field_timeout: "Tempo esgotado (em segundos)"
+  field_timeout: "Tempo de espera (em segundos)"
   field_board_parent: Fórum principal
   field_private_notes: Notas privadas
   field_inherit_members: Herdar membros
@@ -363,7 +363,7 @@ pt-BR:
   setting_app_title: Título da aplicação
   setting_app_subtitle: Subtítulo da aplicação
   setting_welcome_text: Texto de boas-vindas
-  setting_default_language: Lingaguem padrão
+  setting_default_language: Idioma padrão
   setting_login_required: Autenticação requirida
   setting_self_registration: Auto-registro
   setting_attachment_max_size: Tamanho máximo de arquivo anexo
@@ -371,71 +371,71 @@ pt-BR:
   setting_mail_from: Emissão de email
   setting_bcc_recipients: Cópia oculta (bcc)
   setting_plain_text_mail: Email em texto plano (sem HTML)
-  setting_host_name: Nome e caminho do host
+  setting_host_name: Servidor e subdomínio
   setting_text_formatting: Formatação de texto
-  setting_wiki_compression: Compressão do histório da wiki
-  setting_feeds_limit: Número de itens máximo no feed Atom
+  setting_wiki_compression: Compactação do histório da wiki
+  setting_feeds_limit: Número de registros por Feed
   setting_default_projects_public: Novo projetos são públicos por padrão
   setting_autofetch_changesets: Sincronizar commits automaticamente
   setting_sys_api_enabled: Habilitar WS para gerenciamento de repositório
-  setting_commit_ref_keywords: Referencia palavras-chave
-  setting_commit_fix_keywords: Fixa palavras-chave
+  setting_commit_ref_keywords: Palavras-chave referência
+  setting_commit_fix_keywords: Palavras-chave
   setting_autologin: Autologin
   setting_date_format: Formato da data
   setting_time_format: Formato da hora
-  setting_cross_project_issue_relations: Permitir relação de tarefas entre projetos
+  setting_cross_project_issue_relations: Permitir relacionar tarefas entre projetos
   setting_cross_project_subtasks: Permitir subtarefas entre projetos
   setting_issue_list_default_columns: Colunas padrões visualizadas na lista de tarefas
-  setting_repositories_encodings: Anexos e repositórios
+  setting_repositories_encodings: Codificações de anexos e repositórios
   setting_emails_header: Cabeçalho do email
   setting_emails_footer: Rodapé do email
   setting_protocol: Protocolo
-  setting_per_page_options: Opção de objetos por páginas
-  setting_user_format: Formato de exibição dos usuários
+  setting_per_page_options: Número de itens exibidos por páginas
+  setting_user_format: Formato de exibição do nome dos usuários
   setting_activity_days_default: Dias exibidos na atividade de projeto
-  setting_display_subprojects_issues: Exibir tarefas de subprojetos no projeto principal por padrão
+  setting_display_subprojects_issues: Exibir por padrão tarefas de subprojetos no projeto principal
   setting_enabled_scm: Habilitar SCM
   setting_mail_handler_body_delimiters: "Truncar emails após uma dessas linhas"
-  setting_mail_handler_api_enabled: Habilitar WS para emails enviados
+  setting_mail_handler_api_enabled: Habilitar WS para envios de emails
   setting_mail_handler_api_key: Chave API
   setting_sequential_project_identifiers: Gerar identificadores de projetos sequencialmente
   setting_gravatar_enabled: Utilizar Gravatar como ícone do usuário
   setting_gravatar_default: Imagem Gravatar padrão
-  setting_diff_max_lines_displayed: Número máximo de linhas com diff exibidas
+  setting_diff_max_lines_displayed: Número máximo de linhas exibidas no diff
   setting_file_max_size_displayed: Tamanho máximo de arquivos de texto exibidos
   setting_repository_log_display_limit: Número máximo de revisões exibidas no log do arquivo
   setting_openid: Permitir OpenID login e registro
   setting_password_max_age: Requer mudança de senha após
   setting_password_min_length: Tamanho mínimo da senha
-  setting_new_project_user_role_id: Papel dado a não-administrador que criou um projeto
-  setting_default_projects_modules: Habilitar módulos padrão para novos projetos
+  setting_new_project_user_role_id: Papel dado a não-administrador que cria um projeto
+  setting_default_projects_modules: Módulos padrão habilitados para novos projetos
   setting_issue_done_ratio: Calcular a porcentagem de conclusão da tarefa com
   setting_issue_done_ratio_issue_field: Utilizar o campo da tarefa
   setting_issue_done_ratio_issue_status: Utilizar a situação da tarefa
-  setting_start_of_week: Início do calendário
+  setting_start_of_week: Início da semana
   setting_rest_api_enabled: Habilitar serviço web REST
   setting_cache_formatted_text: Texto formatado em cache
-  setting_default_notification_option: Opção de notificação padrão
-  setting_commit_logtime_enabled: Habilitar tempo de log
-  setting_commit_logtime_activity_id: Atividade por tempo logado
+  setting_default_notification_option: Opção padrão de notificação
+  setting_commit_logtime_enabled: Habilitar registro de tempo
+  setting_commit_logtime_activity_id: Atividade de registro de horas
   setting_gantt_items_limit: Número máximo de itens exibidos no gantt
   setting_issue_group_assignment: Permitir atribuir tarefas para grupos
   setting_default_issue_start_date_to_creation_date: Usar data atual como data inicial para novas tarefas
   setting_commit_cross_project_ref: Permitir todas as tarefas de outros projetos serem referenciadas e corrigidas
   setting_unsubscribe: Permitir usuários apagar sua própria conta
-  setting_session_lifetime: Duração máxima da sessão
-  setting_session_timeout: Duração de sessão inativa
+  setting_session_lifetime: Tempo máximo da sessão
+  setting_session_timeout: Tempo limite de inatividade da sessão
   setting_thumbnails_enabled: Exibir thumbnails de anexos
-  setting_thumbnails_size: Tamanos de thumbnails size (em pixels)
+  setting_thumbnails_size: Tamanhos de thumbnails size (em pixels)
   setting_non_working_week_days: Dias sem expediente
   setting_jsonp_enabled: Habilitar suporte JSONP
   setting_default_projects_tracker_ids: Tipos de tarefas padrão para novos projetos
   setting_mail_handler_excluded_filenames: Excluir anexos por nome
-  setting_force_default_language_for_anonymous: Forçar linguagem padrão para usuários anônimos
-  setting_force_default_language_for_loggedin: Forçar linguagem padrão para usuários registrados
+  setting_force_default_language_for_anonymous: Forçar idioma padrão para usuários anônimos
+  setting_force_default_language_for_loggedin: Forçar idioma padrão para usuários registrados
   setting_link_copied_issue: Vincular tarefas na cópia
   setting_max_additional_emails: Número máximo de emails adicionais
-  setting_search_results_per_page: Resultados da busca por página      
+  setting_search_results_per_page: Número de resultados da busca por página      
 
   permission_add_project: Criar projeto
   permission_add_subprojects: Criar subprojetos
@@ -560,9 +560,9 @@ pt-BR:
   label_issue_category: Categoria da tarefa
   label_issue_category_plural: Categorias das tarefas
   label_issue_category_new: Nova categoria
-  label_custom_field: Campo customizado
-  label_custom_field_plural: Campos customizados
-  label_custom_field_new: Novo campo customizado
+  label_custom_field: Campo personalizado
+  label_custom_field_plural: Campos personalizados
+  label_custom_field_new: Novo campo personalizado
   label_enumerations: Tipos e Categorias
   label_enumeration_new: Novo valor
   label_information: Informação
@@ -572,7 +572,7 @@ pt-BR:
   label_login_with_open_id_option: ou logar com OpenID
   label_password_lost: Recuperar senha
   label_password_required: Confirme sua senha para continuar
-  label_home: Home
+  label_home: Página inicial
   label_my_page: Minha página
   label_my_account: Minha conta
   label_my_projects: Meus projetos
@@ -608,7 +608,7 @@ pt-BR:
   label_text: Texto longo
   label_attribute: Atributo
   label_attribute_plural: Atributos
-  label_no_data: Sem data para exibir
+  label_no_data: Nenhuma informação disponível
   label_change_status: Mudança na situação
   label_history: Histórico
   label_attachment: Arquivo
@@ -632,7 +632,7 @@ pt-BR:
   label_version_plural: Versões
   label_close_versions: Fechar versões completadas
   label_confirmation: Confirmação
-  label_export_to: 'Também disponível em:'
+  label_export_to: 'Exportar para:'
   label_read: Ler...
   label_public_projects: Projetos públicos
   label_open_issues: aberta
@@ -747,7 +747,7 @@ pt-BR:
   label_sort_lowest: Mover para o último
   label_roadmap: Planejamento
   label_roadmap_due_in: "Até %{value}"
-  label_roadmap_overdue: "%{value} depois"
+  label_roadmap_overdue: "%{value} atrasado"
   label_roadmap_no_issues: Nenhuma tarefa para a versão
   label_search: Buscar
   label_result_plural: Resultados
@@ -760,13 +760,13 @@ pt-BR:
   label_index_by_title: Índice por título
   label_index_by_date: Índice por data
   label_current_version: Versão atual
-  label_preview: Visualização
+  label_preview: Pré-visualizar
   label_feed_plural: Feeds
   label_changes_details: Detalhes de todas as mudanças
   label_issue_tracking: Tarefas
   label_spent_time: Tempo gasto
   label_total_spent_time: Tempo gasto total
-  label_overall_spent_time: Visão geral do tempo gasto
+  label_overall_spent_time: Tempo gasto
   label_f_hour: "%{value} hora"
   label_f_hour_plural: "%{value} horas"
   label_time_tracking: Tempo
@@ -870,7 +870,7 @@ pt-BR:
   label_generate_key: Gerar chave
   label_issue_watchers: Observadores
   label_example: Exemplo
-  label_display: Exibir
+  label_display: Exibição
   label_sort: Ordenar
   label_ascending: Ascendente
   label_descending: Descendente
@@ -883,7 +883,7 @@ pt-BR:
   label_group_anonymous: Usuários anônimos
   label_group_non_member: Usuários não-membro
   label_time_entry_plural: Tempo gasto
-  label_version_sharing_none: Não compartilhado
+  label_version_sharing_none: Sem compartilhamento
   label_version_sharing_descendants: Com subprojetos
   label_version_sharing_hierarchy: Com hierarquia do projeto
   label_version_sharing_tree: Com árvore do projeto
