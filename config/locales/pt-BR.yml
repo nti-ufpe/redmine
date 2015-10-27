@@ -7,11 +7,11 @@ pt-BR:
       long: "%d de %B de %Y"
       only_day: "%d"
 
-    day_names: "[Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]"
-    abbr_day_names: "[Dom, Seg, Ter, Qua, Qui, Sex, Sáb]"
+    day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
     
-    month_names: "[~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]"
-    abbr_month_names: "[~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]"
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
     order:
       - :dia
       - :mês
@@ -125,7 +125,7 @@ pt-BR:
         inclusion: "não está incluso na lista"
         exclusion: "não está disponível"
         invalid: "não é válido"
-        confirmation: "não está de acordo com a confirmação"
+        confirmation: "não está igual"
         accepted: "precisa ser aceito"
         empty: "não pode ficar vazio"
         blank: "não pode ficar em branco"
@@ -144,7 +144,7 @@ pt-BR:
         greater_than_start_date: "deve ser maior que a data inicial"
         not_same_project: "não pertence ao mesmo projeto"
         circular_dependency: "Esta relação gera uma dependência circular"
-        cant_link_an_issue_with_a_descendant: "Uma tarefa não pode ser relaciona a uma de suas subtarefas"
+        cant_link_an_issue_with_a_descendant: "Uma tarefa não pode ser relacionada a uma de suas subtarefas"
         earlier_than_minimum_start_date: "não pode ser anterior a %{date} por causa das tarefas antecessoras"
 
   actionview_instancetag_blank_option: Selecione
@@ -166,7 +166,7 @@ pt-BR:
   notice_account_wrong_password: Senha inválida.
   notice_account_register_done: "Conta criada com sucesso. Para ativar sua conta, clique no link que foi enviado para seu email."
   notice_account_unknown_email: Usuário desconhecido.
-  notice_account_not_activated_yet: "Sua conta ainda não foi ativada. Se você deseja receber um novo email de ativação, por favor <a href=%{url}>clique aqui</a>."  
+  notice_account_not_activated_yet: "Sua conta ainda não foi ativada. Se você deseja receber um novo email de ativação, favor <a href=%{url}>clique aqui</a>."  
   notice_account_locked: Sua conta está bloqueada.
   notice_can_t_change_password: Essa conta usa autenticação externa. Não é possível modificar a senha.
   notice_account_lost_email_sent: Email com instruções para criação de nova senha foi enviado.
@@ -183,8 +183,8 @@ pt-BR:
   notice_email_error: "Um erro ocorreu durante o envio do email (%{value})"
   notice_feeds_access_key_reseted: Sua chave de acesso Atom foi reconfigurada.
   notice_api_access_key_reseted: Sua chave de acesso API foi reconfigurada.
-  notice_failed_to_save_issues: "Erro ao salvar %{count} tarefa(s) em %{total} selecionadas: %{ids}."
-  notice_failed_to_save_time_entries: "Erro ao salvar %{count} tempo em %{total} selecionados: %{ids}."
+  notice_failed_to_save_issues: "Erro ao salvar %{count} de %{total} tarefas: %{ids}."
+  notice_failed_to_save_time_entries: "Erro ao salvar %{count} de %{total} horas trabalhadas: %{ids}."
   notice_failed_to_save_members: "Erro ao salvar membro(s): %{errors}."
   notice_no_issue_selected: "Nenhuma tarefa selecionada! Favor, checar as tarefas que deseja editar."
   notice_account_pending: "Sua conta foi criada e está aguardando aprovação do administrador."
@@ -192,7 +192,7 @@ pt-BR:
   notice_unable_delete_version: Não é possível apagar a versão.
   notice_unable_delete_time_entry: Não é possível adicionar o tempo.
   notice_issue_done_ratios_updated: Percentual de conclusão atualizado.
-  notice_gantt_chart_truncated: "Esse quadro foi bloqueado porque excede o número máximo de itens que podem ser visualizados (%{max})"
+  notice_gantt_chart_truncated: "Esse quadro foi bloqueado porque excede o número máximo de itens que podem ser exibidos (%{max})"
   notice_issue_successful_create: "Tarefa %{id} criada."
   notice_issue_update_conflict: "Tarefa foi atualizada por outro usuário enquanto você estava editando."
   notice_account_deleted: "Sua conta foi permanentemente removida."
@@ -200,13 +200,13 @@ pt-BR:
   notice_new_password_must_be_different: Nova senha deve ser diferente da atual.  
   
   error_can_t_load_default_data: "Configuração padrão não pode ser carregada: %{value}"
-  error_scm_not_found: "A entrada ou revisão não foi encontrada no repositório."
+  error_scm_not_found: "O dado ou revisão não foi encontrada no repositório."
   error_scm_command_failed: "Um erro ocorreu durante o acesso ao repositório: %{value}"
-  error_scm_annotate: "A entrada naão existe ou não pode ser salva."
-  error_scm_annotate_big_text_file: "A entrada não pode ser salva porque excede o tamanho máximo do texto do arquivo."
+  error_scm_annotate: "O dado não existe ou não pode ser salvo."
+  error_scm_annotate_big_text_file: "O dado não pode ser salvo porque excede o tamanho máximo do texto do arquivo."
   error_issue_not_found_in_project: 'A tarefa não foi encontrada ou pertence a outro projeto'
   error_no_tracker_in_project: 'Nenhum tipo de tarefa associado ao projeto. Favor, checar as Configurações do projeto.'
-  error_no_default_issue_status: 'Nenhum status de tarefa definido. Favor, checar sua configuração (Ir em "Administração -> Status das tarefas").'
+  error_no_default_issue_status: 'Nenhum situação de tarefa definido. Favor, checar sua configuração (Ir em "Administração -> Status das tarefas").'
   error_can_not_delete_custom_field: Não é possível remover o campo customizado
   error_can_not_delete_tracker: "Esse tipo de tarefa contém tarefas e não pode ser removido."
   error_can_not_remove_role: "Esse papel está em uso e não pode ser removido."
@@ -214,8 +214,8 @@ pt-BR:
   error_can_not_archive_project: Projeto não pode ser arquivado
   error_issue_done_ratios_not_updated: "Percentual de conclusão não atualizado."
   error_workflow_copy_source: 'Favor selecione um tipo de tarefa ou papel'
-  error_workflow_copy_target: 'Favor selecione um(ns) tipo(s) de tarefa(s) ou papel(éis)'
-  error_unable_delete_issue_status: 'Não é possível remover o status da tarefa'
+  error_workflow_copy_target: 'Favor selecione tipo(s) de tarefa(s) ou papel(éis)'
+  error_unable_delete_issue_status: 'Não é possível remover a situação da tarefa'
   error_unable_to_connect: "Não é possível conectar (%{value})"
   error_attachment_too_big: "Arquivo não pode ser carregado porque excede o tamanho permitido de arquivo (%{max_size})"
   error_session_expired: "Sessão expirada. Favor, logar novamente."
@@ -249,9 +249,9 @@ pt-BR:
   field_filesize: Tamanho
   field_downloads: Downloads
   field_author: Autor
-  field_created_on: Criado em
-  field_updated_on: Atualizado em
-  field_closed_on: Concluído em
+  field_created_on: Criada em
+  field_updated_on: Atualizada em
+  field_closed_on: Concluída em
   field_field_format: Formato
   field_is_for_all: Para todos os projetos
   field_possible_values: Valores possíveis
@@ -263,23 +263,23 @@ pt-BR:
   field_title: Título
   field_project: Projeto
   field_issue: Tarefa
-  field_status: Status
+  field_status: Situação
   field_notes: Notas
   field_is_closed: Tarefa concluída
   field_is_default: Valor padrão
   field_tracker: Tipo de Tarefa
   field_subject: Assunto
-  field_due_date: Data de fim
+  field_due_date: Data prevista
   field_assigned_to: Atribuída para
   field_priority: Prioridade
   field_fixed_version: Versão
   field_user: Usuário
   field_principal: Principal
   field_role: Papel
-  field_homepage: Homepage
+  field_homepage: Página do Projeto
   field_is_public: Público
   field_parent: Subprojeto de
-  field_is_in_roadmap: Tarefas visualizadas no Roadmap
+  field_is_in_roadmap: Tarefas visualizadas no Planejamento
   field_login: Login
   field_mail_notification: Notificações de email
   field_admin: Administrador
@@ -300,7 +300,7 @@ pt-BR:
   field_attr_lastname: Sobrenome
   field_attr_mail: Email
   field_onthefly: Criação dinâmica de usuário
-  field_start_date: Data de início
+  field_start_date: Início
   field_done_ratio: "% Realizada"
   field_auth_source: Modo de autenticação
   field_hide_mail: Ocultar endereço de email
@@ -319,7 +319,7 @@ pt-BR:
   field_redirect_existing_links: Redicionar links existentes
   field_estimated_hours: Tempo estimado
   field_column_names: Colunas
-  field_time_entries: Tempo de log
+  field_time_entries: Registro de horas
   field_time_zone: Fuso horário
   field_searchable: Utilizado em busca
   field_default_value: Valor padrão
@@ -355,9 +355,9 @@ pt-BR:
   field_inherit_members: Herdar membros
   field_generate_password: Gerar senha
   field_must_change_passwd: Deve mudar a senha no próxima vez que logar
-  field_default_status: Status padrão
+  field_default_status: Situação padrão
   field_users_visibility: Visibilidade dos usuários
-  field_time_entries_visibility: Visibilidade do tempo de log
+  field_time_entries_visibility: Visibilidade do registro de horas
   field_total_estimated_hours: Tempo total estimado
   
   setting_app_title: Título da aplicação
@@ -411,7 +411,7 @@ pt-BR:
   setting_default_projects_modules: Habilitar módulos padrão para novos projetos
   setting_issue_done_ratio: Calcular a porcentagem de conclusão da tarefa com
   setting_issue_done_ratio_issue_field: Utilizar o campo da tarefa
-  setting_issue_done_ratio_issue_status: Utilizar o status da tarefa
+  setting_issue_done_ratio_issue_status: Utilizar a situação da tarefa
   setting_start_of_week: Início do calendário
   setting_rest_api_enabled: Habilitar serviço web REST
   setting_cache_formatted_text: Texto formatado em cache
@@ -420,7 +420,7 @@ pt-BR:
   setting_commit_logtime_activity_id: Atividade por tempo logado
   setting_gantt_items_limit: Número máximo de itens exibidos no gantt
   setting_issue_group_assignment: Permitir atribuir tarefas para grupos
-  setting_default_issue_start_date_to_creation_date: Usar data atual como data de início para novas tarefas
+  setting_default_issue_start_date_to_creation_date: Usar data atual como data inicial para novas tarefas
   setting_commit_cross_project_ref: Permitir todas as tarefas de outros projetos serem referenciadas e corrigidas
   setting_unsubscribe: Permitir usuários apagar sua própria conta
   setting_session_lifetime: Duração máxima da sessão
@@ -469,8 +469,8 @@ pt-BR:
   permission_delete_issue_watchers: Apagar observadores
   permission_log_time: Tempo gasto
   permission_view_time_entries: Visualizar tempo gasto
-  permission_edit_time_entries: Editar tempo de log
-  permission_edit_own_time_entries: Editar próprio tempo de log
+  permission_edit_time_entries: Editar tempo de trabalho
+  permission_edit_own_time_entries: Editar próprio tempo de trabalho
   permission_manage_news: Gerenciar notícias
   permission_comment_news: Comentar notícias
   permission_view_documents: Visualizar documentos
@@ -502,8 +502,8 @@ pt-BR:
   permission_manage_subtasks: Gerenciar subtarefas
   permission_manage_related_issues: Gerenciar tarefas relacionadas
 
-  project_module_issue_tracking: Rastreamento de tarefa
-  project_module_time_tracking: Rastreamento de tempo
+  project_module_issue_tracking: Tarefas
+  project_module_time_tracking: Tempos
   project_module_news: Notícias
   project_module_documents: Documentos
   project_module_files: Arquivos
@@ -529,12 +529,12 @@ pt-BR:
   label_issue: Tarefa
   label_issue_new: Nova tarefa
   label_issue_plural: Tarefas
-  label_issue_view_all: Visualizar todas tarefas
+  label_issue_view_all: Visualizar todas as tarefas
   label_issues_by: "Tarefas por %{value}"
   label_issue_added: Tarefa adicionada
   label_issue_updated: Tarefa atualizada
   label_issue_note_added: Nota adicionada
-  label_issue_status_updated: Status atualizado
+  label_issue_status_updated: Situação atualizada
   label_issue_assigned_to_updated: Atribuição atualizada
   label_issue_priority_updated: Prioridade atualizada
   label_document: Documento
@@ -554,9 +554,9 @@ pt-BR:
   label_tracker_plural: Tipos de tarefas
   label_tracker_new: Novo tipo de tarefa
   label_workflow: Fluxo de trabalho
-  label_issue_status: Status da tarefa
-  label_issue_status_plural: Status das tarefas
-  label_issue_status_new: Novo status
+  label_issue_status: Situação da tarefa
+  label_issue_status_plural: Situações das tarefas
+  label_issue_status_new: Nova situação
   label_issue_category: Categoria da tarefa
   label_issue_category_plural: Categorias das tarefas
   label_issue_category_new: Nova categoria
@@ -579,14 +579,14 @@ pt-BR:
   label_my_page_block: Minha página
   label_administration: Administração
   label_login: Logar
-  label_logout: Deslogar
+  label_logout: Sair
   label_help: Ajuda
   label_reported_issues: Tarefas reportadas
-  label_assigned_to_me_issues: Tarefas atribuídas a mim
+  label_assigned_to_me_issues: Minhas tarefas
   label_last_login: Conexão perdida
   label_registered_on: Registrada em
   label_activity: Atividade
-  label_overall_activity: Atividade geral
+  label_overall_activity: Atividades
   label_user_activity: "Atividade de %{value}"
   label_new: Novo
   label_logged_as: Logado como
@@ -609,7 +609,7 @@ pt-BR:
   label_attribute: Atributo
   label_attribute_plural: Atributos
   label_no_data: Sem data para exibir
-  label_change_status: Mudança no status
+  label_change_status: Mudança na situação
   label_history: Histórico
   label_attachment: Arquivo
   label_attachment_new: Novo arquivo
@@ -622,7 +622,7 @@ pt-BR:
   label_news_new: Adicionar notícias
   label_news_plural: Notícias
   label_news_latest: Notícias recentes
-  label_news_view_all: Visualizar todas notícias
+  label_news_view_all: Visualizar todas as notícias
   label_news_added: Notícias adicionadas
   label_news_comment_added: Comentário adiciona a notícia
   label_settings: Configurações
@@ -658,8 +658,8 @@ pt-BR:
   label_total: Total
   label_total_time: Tempo total
   label_permissions: Permissões
-  label_current_status: Status atual
-  label_new_statuses_allowed: Novo status permitido
+  label_current_status: Situação atual
+  label_new_statuses_allowed: Nova situação permitida
   label_all: tudo
   label_any: qualquer um
   label_none: nenhum
@@ -691,8 +691,8 @@ pt-BR:
   label_my_queries: Meus filtros personalizados
   label_filter_add: Adicionar filtro
   label_filter_plural: Filtros
-  label_equals: é
-  label_not_equals: não é
+  label_equals: igual a
+  label_not_equals: diferente de
   label_in_less_than: é menor que
   label_in_more_than: é maior que
   label_in_the_next_days: no(s) próximo(s)
@@ -739,13 +739,13 @@ pt-BR:
   label_latest_revision: Revisão recente
   label_latest_revision_plural: Revisões recentes
   label_view_revisions: Visualizar revisão
-  label_view_all_revisions: Visualizar todas revisões
+  label_view_all_revisions: Visualizar todas as revisões
   label_max_size: Tamanho máximo
   label_sort_highest: Mover para o topo
   label_sort_higher: Mover para cima
   label_sort_lower: Mover para baixo
   label_sort_lowest: Mover para o último
-  label_roadmap: Roadmap
+  label_roadmap: Planejamento
   label_roadmap_due_in: "Até %{value}"
   label_roadmap_overdue: "%{value} depois"
   label_roadmap_no_issues: Nenhuma tarefa para a versão
@@ -763,13 +763,13 @@ pt-BR:
   label_preview: Visualização
   label_feed_plural: Feeds
   label_changes_details: Detalhes de todas as mudanças
-  label_issue_tracking: Rastreamento de tarefa
+  label_issue_tracking: Tarefas
   label_spent_time: Tempo gasto
   label_total_spent_time: Tempo gasto total
   label_overall_spent_time: Visão geral do tempo gasto
   label_f_hour: "%{value} hora"
   label_f_hour_plural: "%{value} horas"
-  label_time_tracking: Rastreamento de tempo
+  label_time_tracking: Tempo
   label_change_plural: Mudanças
   label_statistics: Estatísticas
   label_commits_per_month: Commits por mês
@@ -783,7 +783,7 @@ pt-BR:
   label_permissions_report: Relatório de permissões
   label_watched_issues: Tarefas observadas
   label_related_issues: Tarefas relacionadas
-  label_applied_status: Status aplicado
+  label_applied_status: Situação aplicada
   label_loading: Carregando...
   label_relation_new: Novo relacionamento
   label_relation_delete: Apagar relacionamento
@@ -829,15 +829,15 @@ pt-BR:
   label_feeds_access_key_created_on: "Chave de acesso Atom criada %{value} atrás"
   label_module_plural: Módulos
   label_added_time_by: "Adicionado por %{author} %{age} atrás"
-  label_updated_time_by: "Atualizado por %{author} %{age} atrás"
-  label_updated_time: "Atualizado %{value} atrás"
+  label_updated_time_by: "Atualizada por %{author} %{age} atrás"
+  label_updated_time: "Atualizada %{value} atrás"
   label_jump_to_a_project: Ir para o projeto...
   label_file_plural: Arquivos
   label_changeset_plural: Mudanças
   label_default_columns: Colunas padrão
   label_no_change_option: (Sem mudança)
-  label_bulk_edit_selected_issues: Editar tarefas selecionadas em massa
-  label_bulk_edit_selected_time_entries: Editar tempos selecionados em massa
+  label_bulk_edit_selected_issues: Edição em massa de tarefas selecionadas
+  label_bulk_edit_selected_time_entries: Edição em massa de tempos de trabalho selecionados
   label_theme: Tema
   label_default: Padrão
   label_search_titles_only: Buscar por título apenas
@@ -858,7 +858,7 @@ pt-BR:
   label_more: Mais
   label_scm: SCM
   label_plugins: Plugins
-  label_ldap_authentication: Authenticação LDAP
+  label_ldap_authentication: Autenticação LDAP
   label_downloads_abbr: D/L
   label_optional_description: Descrição opcional
   label_add_another_file: Adicionar outro arquivo
@@ -892,7 +892,7 @@ pt-BR:
   label_copy_source: De
   label_copy_target: Para
   label_copy_same_as_target: Para o mesmo
-  label_display_used_statuses_only: Apenas exibir status que são utilizados por esses tipos de tarefas
+  label_display_used_statuses_only: Apenas exibir situação que são utilizadas por esses tipos de tarefas
   label_api_access_key: Chave de acesso API
   label_missing_api_access_key: Chave de acesso API não encontrada
   label_api_access_key_created_on: "Chave de acesso API criada %{value} atrás"
@@ -917,7 +917,7 @@ pt-BR:
   label_search_for_watchers: Buscar observadores
   label_session_expiration: Sessão expirada
   label_show_closed_projects: Visualizar projetos fechados
-  label_status_transitions: Status de transição
+  label_status_transitions: Situação de transição
   label_fields_permissions: Campos permitidos
   label_readonly: Apenas leitura
   label_required: Requirido
@@ -964,8 +964,8 @@ pt-BR:
   label_parent_task_attributes: Atributos de tarefas pai
   label_parent_task_attributes_derived: Calculado a partir das subtarefas
   label_parent_task_attributes_independent: Independente de subtarefas
-  label_time_entries_visibility_all: Todos os tempos adicionados
-  label_time_entries_visibility_own: Tempo criado pelo usuário
+  label_time_entries_visibility_all: Todos os tempos de trabalho adicionados
+  label_time_entries_visibility_own: Tempo de trabalho criado pelo usuário
   label_member_management: Gerenciar membro
   label_member_management_all_roles: Todos papéis
   label_member_management_selected_roles_only: Apenas esses papéis
@@ -1020,7 +1020,7 @@ pt-BR:
   button_edit_section: Editar esta seção
   button_export: Exportar
   button_delete_my_account: Apagar minha conta
-  button_close: Fechar
+  button_close: Arquivar
   button_reopen: Reabrir
 
   status_active: ativo
@@ -1038,14 +1038,14 @@ pt-BR:
   field_active: Ativo
 
   text_select_mail_notifications: Selecionar para qual email a notificação deve ser enviada.
-  text_regexp_info: "ex: ^[A-Z0-9]+$"
+  text_regexp_info: "ex. ^[A-Z0-9]+$"
   text_min_max_length_info: 0 significa nenhuma restrição
   text_project_destroy_confirmation: Tem certeza que deseja apagar esse projeto e seus dados?
   text_subprojects_destroy_warning: "Seus subprojetos: %{value} serão deletados."
   text_workflow_edit: Selecionar um papel e um tipo de tarefa para editar o fluxo de trabalho
   text_are_you_sure: Tem certeza?
   text_journal_changed: "%{label} modificado de %{old} para %{new}"
-  text_journal_changed_no_detail: "%{label} atualizado"
+  text_journal_changed_no_detail: "%{label} atualizada"
   text_journal_set_to: "%{label} configurado para %{value}"
   text_journal_deleted: "%{label} apagado (%{old})"
   text_journal_added: "%{label} %{value} adicionado"
@@ -1068,23 +1068,23 @@ pt-BR:
   text_issue_category_destroy_assignments: Remover categorias atribuídas
   text_issue_category_reassign_to: Reatribuir tarefas para essa categoria
   text_user_mail_option: "Para projetos não selecionados, você receberá somente notificações sobre algo que observa ou está atribuído (ex. tarefas que você é o autor ou está atribuído a você)."
-  text_no_configuration_data: "Papéis, tipos de tarefas, status de tarefas e fluxo de trabalho ainda não foram configurados.\nÉ recomendado carregar as configurações padrão. Você poderá modificar após o carregamento."
+  text_no_configuration_data: "Papéis, tipos de tarefas, situação de tarefas e fluxo de trabalho ainda não foram configurados.\nÉ recomendado carregar as configurações padrão. Você poderá modificar após o carregamento."
   text_load_default_configuration: Carregar configuração padrão
   text_status_changed_by_changeset: "Aplicar mudanças %{value}."
   text_time_logged_by_changeset: "Mudanças aplicadas %{value}."
   text_issues_destroy_confirmation: 'Tem certeza que deseja apagar a(s) tarefa(s) selecionada(s)?'
   text_issues_destroy_descendants_confirmation: "%{count} subtarefa(s) será(ão) removida(s)."
-  text_time_entries_destroy_confirmation: 'Tem certeza que deseja apagar o(s) tempo(s) selecionado(s)?'
+  text_time_entries_destroy_confirmation: 'Tem certeza que deseja apagar a(s) hora(s) de trabalho selecionada(s)?'
   text_select_project_modules: 'Selecionar módulos habilitados para esse projeto:'
   text_default_administrator_account_changed: Conta padrão de administrador modificada
   text_file_repository_writable: Diretório de anexo com permissão de escrita
   text_plugin_assets_writable: Diretório de plugins com permissão de escrita
   text_rmagick_available: RMagick disponível (opcional)
   text_convert_available: ImageMagick disponível (opcional)
-  text_destroy_time_entries_question: "%{hours} horas serão apagadas da tarefa. O que deseja fazer?"
-  text_destroy_time_entries: Apagar horas adicionadas
-  text_assign_time_entries_to_project: Atribuir horas para o projeto
-  text_reassign_time_entries: 'Reatribuir horas para essa tarefa:'
+  text_destroy_time_entries_question: "%{hours} horas de trabalho serão apagadas da tarefa. O que deseja fazer?"
+  text_destroy_time_entries: Apagar horas de trabalho adicionadas
+  text_assign_time_entries_to_project: Atribuir horas de trabalho para o projeto
+  text_reassign_time_entries: 'Reatribuir horas de trabalho para essa tarefa:'
   text_user_wrote: "%{value} escreveu:"
   text_enumeration_destroy_question: "%{count} valor atribuído aos objetos."
   text_enumeration_category_reassign_to: 'Reatribuir eles para esse valor:'
@@ -1140,7 +1140,7 @@ pt-BR:
 
   enumeration_issue_priorities: Prioridades da tarefa
   enumeration_doc_categories: Categorias de documento
-  enumeration_activities: Atividades (rastreamento de tempo)
+  enumeration_activities: Atividades (tempo)
   enumeration_system_activity: Atividade do sistema
   description_filter: Filtro
   description_search: Campo de busca
