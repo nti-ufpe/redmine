@@ -1,0 +1,3 @@
+[submodule "plugins/redmine_issue_templates"]
+	path = plugins/redmine_issue_templates
+	url = https://github.com/nti-ufpe/redmine_issue_templates.git
