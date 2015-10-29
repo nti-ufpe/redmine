@@ -971,7 +971,7 @@ pt-BR:
   label_member_management_selected_roles_only: Apenas esses papéis
 
   button_login: Login
-  button_submit: Submeter
+  button_submit: Enviar
   button_save: Salvar
   button_check_all: Marcar todos
   button_uncheck_all: Desmarcar todos
@@ -1013,7 +1013,7 @@ pt-BR:
   button_annotate: Anotar
   button_update: Atualizar
   button_configure: Configurar
-  button_quote: Citar
+  button_quote: Responder
   button_duplicate: Duplicar
   button_show: Exibir
   button_hide: Ocular
