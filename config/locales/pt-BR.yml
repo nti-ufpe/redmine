@@ -428,7 +428,7 @@ pt-BR:
   setting_default_notification_option: Opção padrão de notificação
   setting_commit_logtime_enabled: Habilitar registro de tempo
   setting_commit_logtime_activity_id: Atividade de registro de horas
-  setting_gantt_items_limit: Número máximo de itens exibidos no gantt
+  setting_gantt_items_limit: Número máximo de itens exibidos no Gantt
   setting_issue_group_assignment: Permitir atribuir tarefas para grupos
   setting_default_issue_start_date_to_creation_date: Usar data atual como data inicial para novas tarefas
   setting_commit_cross_project_ref: Permitir todas as tarefas de outros projetos serem referenciadas e corrigidas
@@ -436,7 +436,7 @@ pt-BR:
   setting_session_lifetime: Tempo máximo da sessão
   setting_session_timeout: Tempo limite de inatividade da sessão
   setting_thumbnails_enabled: Exibir thumbnails de anexos
-  setting_thumbnails_size: Tamanhos de thumbnails size (em pixels)
+  setting_thumbnails_size: Tamanhos de thumbnails (em pixels)
   setting_non_working_week_days: Dias sem expediente
   setting_jsonp_enabled: Habilitar suporte JSONP
   setting_default_projects_tracker_ids: Tipos de tarefas padrão para novos projetos
@@ -474,7 +474,7 @@ pt-BR:
   permission_delete_issues: Apagar tarefas
   permission_manage_public_queries: Gerenciar filtros públicos
   permission_save_queries: Salvar filtro
-  permission_view_gantt: Visualizar gantt
+  permission_view_gantt: Visualizar Gantt
   permission_view_calendar: Visualizar calendário
   permission_view_issue_watchers: Visualizar lista de observadores
   permission_add_issue_watchers: Adicionar observadores
@@ -666,6 +666,7 @@ pt-BR:
     one:   1 tarefa
     other: "%{count} tarefas"
   label_total: Total
+  label_total_plural: Totais
   label_total_time: Tempo Total
   label_permissions: Permissões
   label_current_status: Situação atual
@@ -1113,7 +1114,7 @@ pt-BR:
   text_user_wrote: "%{value} escreveu:"
   text_enumeration_destroy_question: "%{count} valor atribuído aos objetos."
   text_enumeration_category_reassign_to: 'Reatribuir eles para esse valor:'
-  text_email_delivery_not_configured: "Envio de email não configurado, e notificações estão desabilitadas.\nConfigure o servidor SMTP em config/configuration.yml e reinicie a aplicação para habilitá-los."
+  text_email_delivery_not_configured: "Envio de email e notificações não configurados e desabilitados.\nConfigure o servidor SMTP em config/configuration.yml e reinicie a aplicação para habilitá-los."
   text_repository_usernames_mapping: "Selecionar ou atualizar o mapeamento de usuário do Remine para cada nome encontrado no log do repositório.\nUsuários com mesmo nome ou email são automaticamente mapeados."
   text_diff_truncated: '... Esse diff foi resumido porque excede o tamanho máximo que pode ser exibido.'
   text_custom_field_possible_values_info: 'Uma linha para cada valor'
@@ -1145,7 +1146,7 @@ pt-BR:
   default_role_developer: Desenvolvedor
   default_role_reporter: Relator
   default_tracker_bug: Bug
-  default_tracker_feature: Feature
+  default_tracker_feature: Requisito
   default_tracker_support: Suporte
   default_issue_status_new: Nova
   default_issue_status_in_progress: Em Progresso
